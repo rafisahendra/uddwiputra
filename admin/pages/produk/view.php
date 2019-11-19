@@ -7,7 +7,7 @@ $db = new M_admin();
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-  <h6  class=" font-weight-bold text-right">Data: Kategori</h6>
+  <h6  class=" font-weight-bold text-right">Data: Produk</h6>
     <a href="#" class="btn btn-info btn-icon-split btn-sm">
       <span class="icon text-white-50">
         <i class="fas fa-plus"></i>
@@ -44,10 +44,10 @@ $db = new M_admin();
               <td><?= $d->kategori_nama ?></td>
               <td><?= $d->kategori_nama ?></td>
               <td>
-                <a href="!#" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#exampleModal<?= $d->kategori_id ?>">
+                <a href="!#" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#exampleModal<?= $d->produk_id ?>">
                   <i class="fas fa-edit"></i>
                 </a>
-                <a href="!#" class="btn btn-warning btn-sm"  data-toggle="modal" data-target="#exampleModal2<?= $d->kategori_id ?>">
+                <a href="!#" class="btn btn-warning btn-sm"  data-toggle="modal" data-target="#exampleModal2<?= $d->produk_id ?>">
                   <i class="fas fa-trash" ></i>
                 </a>
               </td>
@@ -128,7 +128,7 @@ $db = new M_admin();
       </div>
       <form action="../../controller/AdmController.php?aksi=tambah_kategori" method="POST">
       <div class="modal-body">
-        <label for="">Tambah Kategori</label>
+        <label for="">Nama Produk</label>
       <input type="text" name="nama_k" class="form-control" placeholder="Nama Kategori">
       </div>
       

@@ -122,7 +122,7 @@ $db = new M_admin();
       </div>
       <form action="../../controller/AdmController.php?aksi=tambah_kategori" method="POST">
       <div class="modal-body">
-        <label for="">Tambah Kategori</label>
+        <label for="">Nama Kategori</label>
       <input type="text" name="nama_k" class="form-control" placeholder="Nama Kategori">
       </div>
       
