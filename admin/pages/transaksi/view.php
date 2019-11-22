@@ -20,7 +20,12 @@
           <thead>
             <tr align="center">
               <th width="10px;">No</th>
-              <th>Nama Kategori</th>
+              <th>No Order</th>
+              <th>Nama Produk</th>
+              <th>Nama Pelangan</th>
+              <th>Total Bayar</th>
+              <th>Tanggal Beli </th>
+              <th>Email</th>
               <th width="100px;">Aksi</th>
 
             </tr>
@@ -32,6 +37,11 @@
         foreach($db->tampil_kategori() as $no=> $d ):?>
             <tr align="center">
               <td><?= $no+1 ?></td>
+              <td><?= $d->kategori_nama ?></td>
+              <td><?= $d->kategori_nama ?></td>
+              <td><?= $d->kategori_nama ?></td>
+              <td><?= $d->kategori_nama ?></td>
+              <td><?= $d->kategori_nama ?></td>
               <td><?= $d->kategori_nama ?></td>
               <td>
                 <a href="!#" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#exampleModal<?= $d->kategori_id ?>">
