@@ -1,6 +1,4 @@
-<?php
-include "config/koneksi.php";   
- ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +39,7 @@ include "config/koneksi.php";
                   <div class="text-center">
                     <h6 class=" text-gray-900 mb-4 "> Masukan username dan password </h6>
                   </div>
-                  <form class="user" method="post" action="aksi_login.php">
+                  <form class="user" method="post" action="../controller/AdmController.php?aksi=login">
                     <div class="form-group">
                       <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" name="username" placeholder="Username" >
                     </div>

@@ -5,7 +5,7 @@ $db = new M_admin();
 $aksi = $_GET['aksi'];
 
 
-    if($aksi == 'change'){
+if($aksi == 'change'){
         if( $_POST['passbaru'] == $_POST['konfirmasi']){
         $db->update_admin($_POST['id'], $_POST['passbaru'],$_POST['konfirmasi']);
         echo"<script>alert('Password Telah Diperbaharui);</script>";
@@ -14,6 +14,11 @@ $aksi = $_GET['aksi'];
         echo"<script>alert('Password baru tidak Sama');</script>";
         echo"<script>window.location='../admin/pages/index.php?module=home/change-password';</script>";
     }
+    }elseif($aksi == 'login'){
+        
+        $db->login($_POST['username'],$_POST['password']);
+        // var_dump($_SESSION['admin_id']);exit;
+         header('location:../admin/index.php');
     }elseif($aksi == 'logout'){
        $db->logout();
         header('location:../admin/login.php');

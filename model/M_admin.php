@@ -5,12 +5,28 @@ include 'Db.php';
 class M_admin extends Db{
 
 // ============================== Login ==============================
+    function login($user, $pass){
+        $stmt  = $this->db->prepare("SELECT * FROM tb_admin WHERE username = '$user'");
+        $stmt->execute();
+        
+        $row  = $stmt->rowCount();
+        $data = $stmt->fetchobject();
+        if($row > 0){
+           
+        if(password_verify($pass, $data->password)){
+                session_start();
+                $_SESSION['admin_id']	 = $data->admin_id;
+                $_SESSION['username']	   = $data->username;
+                $_SESSION['password']	   = $data->password;
+            }
+    }
+}  
 
-function logout(){
+    function logout(){
     session_start();
     session_destroy();
 
-}
+    }
 
 // =======================Tampil Jumlah Form===========================
     function jumlah_kategori(){
