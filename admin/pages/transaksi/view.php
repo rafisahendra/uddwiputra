@@ -2,17 +2,7 @@
 <!-- Page Heading -->
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-  <div class="card-header py-3">
-  <h6  class=" font-weight-bold text-right">Data: Pesanan</h6>
-    <a href="#" class="btn btn-info btn-icon-split btn-sm">
-      <span class="icon text-white-50">
-        <i class="fas fa-plus"></i>
-      </span>
-      <span class="text" data-toggle="modal" data-target="#exampleModal">Tambah</span>
-    </a>
-  
-   
-  </div>
+
   <div class=" card-body">
 
       <div class="table-responsive">
@@ -26,7 +16,7 @@
               <th>Total Bayar</th>
               <th>Tanggal Beli </th>
               <th>Email</th>
-              <th width="100px;">Aksi</th>
+              <th width="200px;">Aksi</th>
 
             </tr>
           </thead>
@@ -44,6 +34,8 @@
               <td><?= $d->kategori_nama ?></td>
               <td><?= $d->kategori_nama ?></td>
               <td>
+                <button data-toggle="modal" data-target="#exampleModal3<?= $d->kategori_id ?>" class="btn btn-danger btn-sm">Detail</button>
+                <button data-toggle="modal" data-target="#exampleModal4<?= $d->kategori_id ?>" class="btn btn-danger btn-sm">Konfirmasi</button>
                 <a href="!#" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#exampleModal<?= $d->kategori_id ?>">
                   <i class="fas fa-edit"></i>
                 </a>
@@ -76,7 +68,7 @@
             </div>
 
               
-            <!-- Modal Edit-->
+            <!-- Edit Data-->
             <div class="modal fade" id="exampleModal<?= $d->kategori_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -103,7 +95,67 @@
               </div>
             </div>
 
+
+              <!-- Detail-->
+              <div class="modal fade" id="exampleModal3<?= $d->kategori_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Transaksi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="../../controller/AdmController.php?aksi=update_kategori" method="POST">
+                  <div class="modal-body">
+                    <label for="">Detail Transaksi</label>
+                    
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-info btn-sm">Ubah</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
            
+              <!-- Konfirmasi-->
+              <div class="modal fade" id="exampleModal4<?= $d->kategori_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Konfirmasi </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="../../controller/AdmController.php?aksi=update_kategori" method="POST">
+                  <div class="modal-body">
+                    <label for="">Status Pembayaran: <b>KF</b></label><br>
+                    <label for="">Konfirmasi </label>
+                    <select name="konfirmasi" id="" class="form-control">
+                      <option value="">Pembayaran Diterimaa</option>
+                      <option value="">Proses Pengiriman</option>
+                    
+                    </select>
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm text-left" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-info btn-sm text-left">Ganti Status</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
 
 
             </tr>
@@ -117,28 +169,3 @@
 
 </div>
 <!-- /.container-fluid -->
-<!-- Modal tambah-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Data </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="../../controller/AdmController.php?aksi=tambah_kategori" method="POST">
-      <div class="modal-body">
-        <label for="">Nama Kategori</label>
-      <input type="text" name="nama_k" class="form-control" placeholder="Nama Kategori">
-      </div>
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-info btn-sm">Simpan</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
