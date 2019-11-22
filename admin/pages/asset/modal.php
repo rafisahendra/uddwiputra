@@ -16,7 +16,7 @@
         <div class="modal-body">Jika memilih "Log Out" anda akan keluar dari halaman ini...</div>
         <div class="modal-footer">
           <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-danger btn-sm" href="home/log-out.php">Logout</a>
+          <a class="btn btn-danger btn-sm" href="../../controller/AdmController.php?aksi=logout">Logout</a>
         </div>
       </div>
     </div>

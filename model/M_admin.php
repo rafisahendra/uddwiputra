@@ -4,7 +4,13 @@ include 'Db.php';
 
 class M_admin extends Db{
 
+// ============================== Login ==============================
 
+function logout(){
+    session_start();
+    session_destroy();
+
+}
 
 // =======================Tampil Jumlah Form===========================
     function jumlah_kategori(){

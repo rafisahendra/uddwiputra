@@ -14,10 +14,13 @@ $aksi = $_GET['aksi'];
         echo"<script>alert('Password baru tidak Sama');</script>";
         echo"<script>window.location='../admin/pages/index.php?module=home/change-password';</script>";
     }
+    }elseif($aksi == 'logout'){
+       $db->logout();
+        header('location:../admin/login.php');
     }elseif($aksi == 'informasi'){
-       $db->ganti_informasi($_POST['judul_informasi'],$_POST['keterangan']);
-        header('location:../admin/pages/index.php?module=informasi/view');
-    }elseif($aksi == 'tentang'){
+        $db->ganti_informasi($_POST['judul_informasi'],$_POST['keterangan']);
+         header('location:../admin/pages/index.php?module=informasi/view');
+     }elseif($aksi == 'tentang'){
         $db->ganti_tentang($_POST['judul_informasi'],$_POST['keterangan']);
         header('location:../admin/pages/index.php?module=tentang/view');
         }elseif($aksi == 'tambah_kategori'){

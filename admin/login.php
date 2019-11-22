@@ -20,21 +20,21 @@ include "config/koneksi.php";
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
 
 <body class="bg-gradient-primary">
 
   <div class="container" style="border-color:red;">
-
+  
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
       <div class="col-md-5 ">
-
+      <h3 align="center" style="margin-top: 30px;font-family: roboto;" class="text-white">UD. Dwi Putra</h3>
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
+          
             <div class="row">
               <div class="col-lg-12">
                 <div class="p-4">
