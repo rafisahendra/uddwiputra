@@ -30,7 +30,7 @@ include "config/koneksi.php";
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-md-4 ">
+      <div class="col-md-5 ">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -39,7 +39,7 @@ include "config/koneksi.php";
               <div class="col-lg-12">
                 <div class="p-4">
                   <div class="text-center">
-                    <h1 class="h5 text-gray-900 mb-4 fa fa-user "> Login| <i>Admin</i> </h1>
+                    <h6 class=" text-gray-900 mb-4 "> Masukan username dan password </h6>
                   </div>
                   <form class="user" method="post" action="aksi_login.php">
                     <div class="form-group">

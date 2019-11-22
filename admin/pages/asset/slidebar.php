@@ -31,7 +31,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-list"></i>
+          <i class="fas fa-fw fa-table"></i>
           <span>Master Data</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -39,23 +39,39 @@
                 <h6 class="collapse-header">Menu Data</h6>
             <a class="collapse-item" href="?module=kategori/view">Kategori</a>
             <a class="collapse-item" href="?module=produk/view">Produk</a>
-            <a class="collapse-item" href="?module=kabupaten/view">Kabupaten</a>
-            <a class="collapse-item" href="?module=Kota/view">Kota</a>
-            <a class="collapse-item" href="?module=Transaksi/view">Transaksi</a>
+            <a class="collapse-item" href="?module=ongkir/view">Ongos Kirim</a>
+                      <a class="collapse-item" href="?module=transaksi/view">Transaksi</a>
           </div>
         </div>
       </li>
 
+          <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo3" aria-expanded="true" aria-controls="collapseTwo3">
+          <i class="fas fa-fw fa-list"></i>
+          <span>Informasi</span>
+        </a>
+        <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo3" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Informasi</h6>
+            <a class="collapse-item" href="?module=tentang/view">Tentang Kami</a>
+           <a class="collapse-item" href="?module=informasi/view">Cara Pemesanan</a>
+          </div>
+        </div>
+      </li>
+
+
+
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw  fa-calendar"></i>
           <span>Laporan</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Menu Laporan</h6>
-            <a class="collapse-item" href="utilities-color.html">Laporan Produk</a>
+           <!--  <a class="collapse-item" href="utilities-color.html">Laporan Produk</a> -->
             <a class="collapse-item" href="utilities-border.html">Laporan Harian</a>
             <a class="collapse-item" href="utilities-animation.html">Laporan Bulanan</a>
             <a class="collapse-item" href="utilities-other.html">Laporan Tahunan</a>
@@ -74,17 +90,12 @@
     
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="?module=admin/view">
+        <a class="nav-link" href="?module=home/change-password">
           <i class="fas fa-fw fa-lock"></i>
           <span>Ubah Password</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="?page=data_produksi">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
+   
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

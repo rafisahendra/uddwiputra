@@ -1,3 +1,7 @@
+
+
+
+
 <div class="row" style="margin-bottom: 360px">
 
             <!-- Earnings (Monthly) Card Example -->
@@ -7,7 +11,11 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Kategori</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">23</div>
+                      <?php
+                      foreach($db->jumlah_kategori() as $value) : ?>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $value ?></div>
+                      
+                    <?php endforeach?>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-list fa-2x text-gray-300"></i>
@@ -24,7 +32,9 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Produk</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                      <?php foreach($db->jumlah_produk() as $value): ?>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $value ?></div>
+                    <?php endforeach ?>
                     </div>
                        <div class="col-auto">
                       <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -44,7 +54,9 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Transaksi</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                              <?php foreach($db->jumlah_transaksi() as $value): ?>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $value ?></div>
+                        <?php endforeach ?>
                         </div>
                       
                       </div>
@@ -64,7 +76,9 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Member</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <?php foreach($db->jumlah_member() as $value): ?>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $value ?></div>
+                    <?php endforeach ?>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-users fa-2x text-gray-300"></i>

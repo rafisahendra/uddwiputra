@@ -15,12 +15,20 @@
   <!-- Page level custom scripts -->
   <script src="../js/demo/chart-area-demo.js"></script>
   <script src="../js/demo/chart-pie-demo.js"></script>
-
-
-
-   <!-- Page level plugins -->
-   <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
   <script src="../js/demo/datatables-demo.js"></script>
+
+  <!-- <script src="../vendor/summer/jquery.slim.js"></script> -->
+  <script src="../vendor/summer/popper.min.js"></script>
+  <script src="../vendor/summer/bootstrap.min.js"></script>
+  <script src="../vendor/summer/summernote-bs4.js"></script>
+
+  <script>
+        $('.note').summernote({
+        
+          tabsize: 2,
+          height: 100
+        });
+  </script>

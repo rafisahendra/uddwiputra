@@ -16,6 +16,8 @@
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
-    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <!-- include summernote css/js -->
+  <link href="../vendor/summer/summernote-bs4.css" rel="stylesheet">   
 
 </head>

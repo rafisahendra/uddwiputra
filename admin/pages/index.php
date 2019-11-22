@@ -1,8 +1,10 @@
 <?php
 session_start();
 
-?>
+include '../../model/M_admin.php';
+$db = new M_admin();
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">

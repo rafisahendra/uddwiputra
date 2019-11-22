@@ -23,6 +23,17 @@ class Db {
     
     }
 
+
+   public function jumlah($sql){
+        $hasil=[];
+        $query  = $this->db->prepare($sql); 
+        $query ->execute(); 
+         while ($data = $query->fetchColumn()){
+           $hasil[]=$data;  
+         }; 
+         return $hasil;
+    }
+   
    
  
 }

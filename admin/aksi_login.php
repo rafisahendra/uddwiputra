@@ -7,7 +7,7 @@
     $sql  = mysqli_query($kon,"SELECT * FROM tb_admin WHERE username = '$user'");
 
     $data = mysqli_fetch_array($sql);
- // var_dump($data );exit;
+
     if(mysqli_num_rows($sql) > 0){
     if(password_verify($pass, $data["password"])){
             session_start();
