@@ -20,7 +20,7 @@
                              
                              ?>
                               
-                            <button data-filter=".<?= $k->kategori_id ?><?= $i ?>"><?= $k->kategori_nama ?></button>
+                            <button data-filter=".<?= $k->kategori_id ?>"><?= $k->kategori_nama ?></button>
                             <?php endforeach ?>
                           
                            
