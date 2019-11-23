@@ -135,7 +135,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="../../controller/AdmController.php?aksi=update_kategori" method="POST">
+                  <form action="../../controller/AdmController.php?aksi=update_order" method="POST">
                   <div class="modal-body">
                     <label for="">Status Pembayaran: <b>KF</b></label><br>
                     <label for="">Konfirmasi </label>
