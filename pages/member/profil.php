@@ -13,7 +13,7 @@
         </div>
     </div>
     <!-- End All Title Box -->
-    <ul class="breadcrumb" style="margin-top:50px;">
+    <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item active">Profil</li>
     </ul>
@@ -174,17 +174,16 @@
                 </div>
 
                 <div class="col-lg-1">
-                    <button type="button" style="color:#fff" class="btn btn-primary btn-sm" data-toggle="modal"
-                        data-target="#exampleModal2">
+                    <button type="button" style="color:#fff" class="btn btn-info btn-sm" data-toggle="modal"
+                        data-target="#exampleModal2<?= $d->member_id ?>">
                         <span class="fa fa-plus"></span> Edit Data
                     </button>
                 </div>
             </div>
 
-
-            <!-- Modal  2-->
-            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2<?= $d->member_id ?>" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -193,13 +192,44 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        <form action="../controller/HomeController.php?aksi=lengkapi_data" method="POST">
                         <div class="modal-body">
-                            ...
+
+                            <label for="">Provinsi</label>
+                            <input type="hidden" name="id" value="<?= $d->member_id ?>">
+                            <select name="id_provinsi" class="form-control" id="" required>
+                                <option value="">--Pilih Provinsi--</option>
+                                <?php foreach($db->tampil_provinsi() as $prov) : ?>
+                                <option value="<?= $prov->provinsi_id ?>"><?= $prov->nama_provinsi ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            <label for="">kabkota</label>
+                            <select name="id_kabkota" class="form-control" id="" required>
+                            <option value="">--Pilih kabupaten/Kota--</option>
+                                <?php foreach($db->tampil_kabkota() as $kab) : ?>
+                                <option value="<?= $kab->kabkota_id ?>"><?= $kab->nama_kabkota ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            <label for="">Alamat</label>
+                            <textarea name="alamat" id="" cols="43" rows="3" required></textarea>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Nohp</label>
+                                    <input type="text" name="nohp" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Kode Pos</label>
+                                    <input type="number" name="kode_pos" class="form-control" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
