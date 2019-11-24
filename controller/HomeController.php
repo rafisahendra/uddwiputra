@@ -1,9 +1,8 @@
 <?php
 include '../model/M_Library.php';
 $db = new M_Library();
-
 $aksi = $_GET['aksi'];
-
+  
 
 if($aksi == 'change'){
         if( $_POST['passbaru'] == $_POST['konfirmasi']){
@@ -21,9 +20,9 @@ if($aksi == 'change'){
     }elseif($aksi == 'logout'){
        $db->logout();
         header('location:../admin/login.php');
-    }elseif($aksi == 'informasi'){
-        $db->ganti_informasi($_POST['judul_informasi'],$_POST['keterangan']);
-         header('location:../admin/pages/index.php?module=informasi/view');
+    }elseif($aksi == 'registrasi'){
+        $db->member_register($_POST['nama'],$_POST['email'],$_POST['password']);
+         header('location:../pages/index.php?page=home/login');
      }elseif($aksi == 'tentang'){
         $db->ganti_tentang($_POST['judul_informasi'],$_POST['keterangan']);
         header('location:../admin/pages/index.php?module=tentang/view');

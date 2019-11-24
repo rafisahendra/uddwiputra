@@ -2,7 +2,7 @@
 <?php
 include 'Db.php';
 
-class M_admin extends Db{
+class M_Library extends Db{
 
 // ============================== Login ==============================
     function login($user, $pass){
@@ -28,7 +28,7 @@ class M_admin extends Db{
 
     }
 
-// =======================Tampil Jumlah Form===========================
+// =======================Tampil Jumlah Form Di Admin===========================
     function jumlah_kategori(){
        $kategori = $this->jumlah("SELECT count(*) FROM tb_kategori ");
        return $kategori;
@@ -126,6 +126,13 @@ class M_admin extends Db{
     } 
     
     //========================= Untuk produk ============================
+    //  untuk Home
+    function tampil_produk8(){
+      
+        $query =  $this->tampil("SELECT* from tb_produk a JOIN tb_kategori b ON a.kategori_id=b.kategori_id order By a.produk_id DESC limit 8");
+        return $query;
+        }
+    // untuk admin
     function tampil_produk(){
       
     $query =  $this->tampil("SELECT* from tb_produk a JOIN tb_kategori b ON a.kategori_id=b.kategori_id");
@@ -216,6 +223,13 @@ class M_admin extends Db{
     $stmt = null;
     } 
 
-
+//////////////////////////////////====Library For Home====///////////////////////////
+    function member_register($nama,$email,$pass){
+        $tanggal =date('Y-m-d');
+    
+        $query = $this->db->prepare("INSERT INTO `tb_member`( `member_nama`, `member_email`, `member_nohp`, `tgl_daftar`, `provinsi_id`, `kabkota_id`, `kode_pos`, `password`, `member_alamat`) VALUES('$nama','$email','N','$tanggal','0','0','N','$pass','N')");
+        $query->execute();
+        $query =null;
+    }
     } 
 ?>

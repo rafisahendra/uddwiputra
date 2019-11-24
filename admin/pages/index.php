@@ -4,8 +4,8 @@ session_start();
 if(empty($_SESSION['admin_id'])){
   header('location:../404.html');
 }
-include '../../model/M_admin.php';
-$db = new M_admin();
+include '../../model/M_Library.php';
+$db = new M_Library();
 
 ?>
 
