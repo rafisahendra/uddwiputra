@@ -31,9 +31,9 @@
 
            
             <div class="row special-list">
-            <?php foreach($db->tampil_produk() as $no => $p):?>
+            <?php foreach($db->tampil_produk8() as $no => $p):?>
                 
-                <div class="col-lg-3 col-md-6 special-grid <?= $k->kategori_id  ?><?= $no ?>">
+                <div class="col-lg-3 col-md-6 special-grid <?= $p->kategori_id  ?>">
                     <div class="products-single fix">
                         <div class="box-img-hover">
                             <div class="type-lb">
@@ -46,8 +46,14 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="?page=home/detail-produk&id=<?= $p->produk_id?>">Add to Cart</a>
-                            </div>
+
+ 
+
+                                   <!-- Button trigger modal -->
+                                <a href="#!" class="cart" data-toggle="modal" data-target="#exampleModal">
+                                Add To Cart
+                                </a>
+                        </div>
                         </div>
                         <div class="why-text">
                             <h4><?= $p->produk_nama ?></h4>
@@ -64,3 +70,24 @@
         </div>
     </div>
     <!-- End Products  -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Warning !!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Maaf anda harus Login Terlebih Dahulu.
+      </div>
+      <div class="modal-footer">
+        <button type="button" a class="btn btn-info" data-dismiss="modal">Mengerti</button>
+      </div>
+    </div>
+  </div>
+</div>

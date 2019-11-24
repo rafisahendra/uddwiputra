@@ -458,7 +458,7 @@
      color: #6f6f6f;
 }
  nav.navbar.bootsnav ul.nav > li > a{
-     position: relative;
+  
      font-weight: 700;
      font-size: 16px;
      color: #010101;
@@ -1253,7 +1253,7 @@
 }
  .footer-link ul li a::before {
      font-family: FontAwesome;
-     content: "\f105";
+     content: "-";
      position: absolute;
      left: 5px;
      line-height: 30px;
@@ -1336,7 +1336,7 @@
 }
 /*------------------------------------------------------------------ All Pages -------------------------------------------------------------------*/
  .all-title-box{
-     background: url("../images/all-bg-title.jpg") no-repeat center center;
+     background: url("../../images/banner/banner-shop.jpg") no-repeat center center;
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -ms-background-size: cover;

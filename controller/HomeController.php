@@ -2,7 +2,7 @@
 include '../model/M_Library.php';
 $db = new M_Library();
 $aksi = $_GET['aksi'];
-  
+   
 
 if($aksi == 'change'){
         if( $_POST['passbaru'] == $_POST['konfirmasi']){
@@ -15,19 +15,19 @@ if($aksi == 'change'){
     }
     }elseif($aksi == 'login'){
         
-        $db->login($_POST['username'],$_POST['password']);
-         header('location:../admin/index.php');
+        $db->member_login($_POST['email'],$_POST['password']);
+         header('location:../pages/indexs.php');
     }elseif($aksi == 'logout'){
-       $db->logout();
-        header('location:../admin/login.php');
+       $db->member_logout();
+        header('location:../pages/index.php?page=home/login');
     }elseif($aksi == 'registrasi'){
         $db->member_register($_POST['nama'],$_POST['email'],$_POST['password']);
          header('location:../pages/index.php?page=home/login');
      }elseif($aksi == 'tentang'){
         $db->ganti_tentang($_POST['judul_informasi'],$_POST['keterangan']);
         header('location:../admin/pages/index.php?module=tentang/view');
-        }elseif($aksi == 'tambah_kategori'){
-        $db->tambah_kategori($_POST['nama_k']);
+     }elseif($aksi == 'lengkapi_data'){
+        $db->lengkapi_data($_POST['id'],$_POST['id_provinsi'],$_POST['id_kabkota'],$_POST['alamat'],$_POST['nohp'],$_POST['kode_pos']);
         header('location:../admin/pages/index.php?module=kategori/view');
     }elseif($aksi == 'hapus_kategori'){
         $db->hapus_kategori($_GET['id']);

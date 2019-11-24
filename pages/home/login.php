@@ -8,21 +8,15 @@
                         <p>In life, there will be things that come up by itself. But there will be things that also need to struggle to get it.</p><p>
 Dalam kehidupan, akan ada hal yang datang dengan sendirinya. Namun akan ada hal juga yang perlu perjuangan untuk mendapatkannya.</p>
                         <ul>
-                            <li>
-                                <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                            </li>
+                           
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12">
                     <div class="contact-form-right">
-                        <h3>Masukan username dan password anda</h3>
+                        <h2>Form Login</h2>
+                        <p> Coming together is a beginning. Keeping together is progress. Working together is success.</p>
+                        <!-- Datang bersama adalah suatu awal. Menjaga agar tetap bersama adalah kemajuan. Bekerja bersama adalah keberhasilan. -->
                        <hr>
                         <form method="POST" action="../controller/HomeController.php?aksi=login">
                             <div class="row">

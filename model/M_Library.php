@@ -226,10 +226,62 @@ class M_Library extends Db{
 //////////////////////////////////====Library For Home====///////////////////////////
     function member_register($nama,$email,$pass){
         $tanggal =date('Y-m-d');
-    
-        $query = $this->db->prepare("INSERT INTO `tb_member`( `member_nama`, `member_email`, `member_nohp`, `tgl_daftar`, `provinsi_id`, `kabkota_id`, `kode_pos`, `password`, `member_alamat`) VALUES('$nama','$email','N','$tanggal','0','0','N','$pass','N')");
-        $query->execute();
+        $md5 = md5($pass);
+        $query = $this->db->prepare("INSERT INTO `tb_member`( `member_nama`, `member_email`, `member_nohp`, `tgl_daftar`, `provinsi_id`, `kabkota_id`, `kode_pos`, `password`, `member_alamat`) VALUES(:nma,:email,'-','$tanggal','0','0','-',:md5,'-')");
+
+        $query->execute([':nma'  =>$nama,
+                         ':email'=>$email,
+                         ':md5'   =>$md5]);
         $query =null;
     }
+
+    function member_login($email, $pass){
+        $md5 = md5($pass);
+        $stmt  = $this->db->prepare("SELECT * FROM tb_member WHERE `member_email` = :email and `password`=:md5");
+        $stmt->execute(
+            [':email'    =>$email,
+             ':md5'     =>$md5]
+        );
+        
+        $row  = $stmt->rowCount();
+        $data = $stmt->fetchobject();
+        if($row > 0){
+            
+     
+                session_start();
+                $_SESSION['member_id']	 = $data->member_id;
+                $_SESSION['member_nama']	   = $data->member_nama;
+                $_SESSION['member_email']	   = $data->member_email;
+               
+    }
+    }  
+    function member_logout(){
+    session_start();
+    session_destroy();
+
+    }
+
+    function member_tampil($session){
+        $query = $this->tampil("SELECT * FROM tb_member  where member_id='$session'");
+        return $query;
+    }
+
+    function member_tampilpk($session){
+        $query = $this->tampil("SELECT * FROM tb_member a JOIN tb_provinsi b ON a.provinsi_id=b.provinsi_id JOIN tb_kabkota c ON a.kabkota_id=c.kabkota_id  where member_id='$session'");
+        return $query;
+    }
+
+    function lengkapi_data($id, $provinsi,$kabkota,$alamat,$nohp,$pos){
+        $stmt = $this->db->prepare("UPDATE tb_member set kabkota_id=:kabkota, provinsi_id=:provinsi, kode_pos=:pos ,member_alamat=:alamat, member_nohp=:nohp where member_id=:id");
+        $stmt->execute([':alamat'  =>$alamat,
+                        ':nohp'  =>$nohp,
+                        ':pos'  =>$pos,
+                        ':provinsi'=>$provinsi,
+                        ':kabkota' =>$kabkota,
+                        ':id'      =>$id ]);
+        $stmt = null;
+    }
+
+
     } 
 ?>
