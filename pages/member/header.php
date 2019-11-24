@@ -21,17 +21,24 @@
                         <li class="nav-item"><a class="nav-link" href="?page=member/profil">Profil</a></li>
 
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown"><span class="fa fa-shopping-bag"></span> SHOP</a>
+                            <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown"><i></i> SHOP  </a>
                             <ul class="dropdown-menu">
-                                <li><a href="cart.html">Keranjang Belaja</a></li>
-                                <li><a href="checkout.html">Daftar Pembelian</a></li>
-                                <li><a href="my-account.html">Konfirmasi Pembayaran</a></li>
-                                <li><a href="wishlist.html">Konfirmasi Penerimaan</a></li>
+                                <li><a href="?page=member/keranjang">Keranjang Belaja </a></li>
+                                <li><a href="?page=member/pesanan">Daftar Pembelian</a></li>
+                                <li><a href="?page=member/konfirmasi-pembayaran">Konfirmasi Pembayaran</a></li>
+                                <li><a href="?page=member/konfirmasi-penerimaan">Konfirmasi Penerimaan</a></li>
             
                             </ul>
                         </li>
                      
-                       
+                        <div class="attr-nav">
+                        <ul>
+                        <li class="side-menu"><a href="?page=member/keranjang">
+						<i class="fa fa-shopping-bag"></i>
+                            <span class="badge">3</span>
+					</a></li>
+                    </ul>
+                </div>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
