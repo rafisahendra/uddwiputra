@@ -2,7 +2,7 @@
 
 <div class="cart-body">
  <!-- Start All Title Box -->
- <!-- <div class="all-title-box">
+ <div class="all-title-box">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- End All Title Box -->
     <ul class="breadcrumb" style="margin-top:50px;">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
