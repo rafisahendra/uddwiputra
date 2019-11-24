@@ -42,7 +42,7 @@ Dalam kehidupan, akan ada hal yang datang dengan sendirinya. Namun akan ada hal 
                               
                                     <div class="form-group">
                                         <label for="">Password</label>
-                                        <input type="password" class="form-control" id="subject" name="password" placeholder="Masukan Password, Min: 8" required data-error="Please enter your Password">
+                                        <input type="password" class="form-control" id="subject" name="password" placeholder="Masukan Password" required data-error="Please enter your Password">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                   

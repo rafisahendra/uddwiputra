@@ -15,8 +15,8 @@ if($aksi == 'change'){
     }
     }elseif($aksi == 'login'){
         
-        $db->login($_POST['username'],$_POST['password']);
-         header('location:../admin/index.php');
+        $db->member_login($_POST['email'],$_POST['password']);
+         header('location:../pages/indexs.php');
     }elseif($aksi == 'logout'){
        $db->logout();
         header('location:../admin/login.php');
