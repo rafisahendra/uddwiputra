@@ -39,50 +39,72 @@
                                 </tr>
                             </thead>
                             <tbody>
+                           <?php 
+                           $hasil=0;
+                           foreach($db->tampil_keranjang($_SESSION['member_id']) as $i=> $k): ?>
+                            <? $subtotal = $k->produk_harga * $k->jumlah_beli ?>
+
+
+                         
+                            <?php $hasil = $hasil += $subtotal ; ?>
+           
                            
                                 <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-									<img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
+									<img class="img-fluid" style="height:70px;width:70px;" src="../images/produk/<?= $k->gambar_produk ?>" alt="" />
 								</a>
                                     </td>
                                     <td class="name-pr">
                                         <a href="#">
-									Lorem ipsum dolor sit amet
+                                        <?= $k->produk_nama ?>
 								</a>
                                     </td>
                                     <td class="price-pr">
-                                        <p>$ 80.0</p>
+                                        <p>Rp <?=number_format($k->produk_harga,2) ?></p>
                                     </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p><?= $k->jumlah_beli ?></p>
+                                    </td>
+                                    <!-- <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td> -->
                                     <td class="total-pr">
-                                        <p>$ 80.0</p>
+                                        <p>Rp <?= number_format($subtotal,2) ?></p>
                                     </td>
                                     <td class="remove-pr">
-                                        <a href="#">
+                                        <a href="../controller/HomeController.php?aksi=hapus_keranjang&id=<?= $k->keranjang_id ?>"> 
+                                    
 									<i class="fas fa-times"></i>
 								</a>
                                     </td>
                                 </tr>
+                               
+                            <?php endforeach ?>
                             
-                          
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-        
-           
                 <div class="col-lg-3 col-sm-12" >
-                    <div class="order-box" ">
+                    <div class="order-box" >
                         <h3>Order Detail</h3>
                         <div class="d-flex">
                             <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold"> $ 130 </div>
+                            <div class="ml-auto font-weight-bold">Rp <?= $hasil ?> </div>
                         </div>
                         <div class="d-flex">
+
+                        <?php foreach($db->member_tampil($_SESSION['member_id']) as $dpk) : ?>
+                            <?php
+                                $prov = $dpk->provinsi_id;
+                                $kabkota = $dpk->kabkota_id;                   
+                            ?>
+                        <?php endforeach ?>
                             <h4>Ongkos Kirim</h4>
-                            <div class="ml-auto font-weight-bold"> $ 10 </div>
+                            <?php foreach($db->ongkos_kirim($prov,$kabkota) as $o) :?>
+                            <div class="ml-auto font-weight-bold">Rp <?= $o->ongkos_kirim ?></div>
+                            <?php endforeach ?>
                         </div>
                         <hr class="my-1">
                        
@@ -95,7 +117,7 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Total keseluruhan</h5>
-                            <div class="ml-auto h5"> $ 388 </div>
+                            <div class="ml-auto h5">Rp <?= $hasil + $o->ongkos_kirim ?></div>
                         </div>
                         <hr> </div>
                 </div>

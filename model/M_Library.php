@@ -53,6 +53,7 @@ class M_Library extends Db{
       
     }
 
+   
 
 //=========================    Informasi  ============================
     function tentang_kami(){
@@ -79,7 +80,7 @@ class M_Library extends Db{
       }
        
      
-//========================= Untuk kategori ============================
+//========================= / Untuk kategori ============================
     function tampil_admin(){
       
     $query =  $this->tampil("SELECT* from tb_admin");
@@ -287,13 +288,52 @@ class M_Library extends Db{
         return $query;
         }
     
-    // Untuk detai produk join kategori
+    // Untuk detail produk join kategori
     function produk_detail($id_produk){
       
         $query =  $this->tampil("SELECT* from tb_produk a JOIN tb_kategori b ON a.kategori_id=b.kategori_id where produk_id='$id_produk' ");
         return $query;
         }
+// ================================ Di keranjang Belanja ==================== 
 
+    // Untuk Input Keranjang
+        function tambah_keranjang($id_member,$id_produk, $beli){
+         $tanggal = date('Y-m-d');
+         $stmt = $this->db->prepare("INSERT INTO `tb_keranjang`(`member_id`, `produk_id`, `jumlah_beli`, `tgl_keranjang`) VALUES(:member,:produk,:beli,:tgl)");
+          $stmt->execute(['member'   => $id_member,
+                          'produk'   => $id_produk,
+                          'beli'     => $beli,
+                          'tgl'      => $tanggal]);
+        }
+
+    // count di keranjang
+    public function jumlah_keranjang($id_member){
+
+
+    $row=[];
+    $query = $this->db->prepare("SELECT * FROM tb_keranjang where member_id='$id_member'");
+    $query ->execute(); 
+    $row = $query->rowcount();
+  
+     return $row;
+    }
+
+    //tampil Keranjang 
+    public function tampil_keranjang($id_member){
+  
+        $stmt = $this->tampil("SELECT * FROM tb_keranjang a JOIN tb_produk b ON a.produk_id=b.produk_id Where member_id='$id_member'");
+        return $stmt;
+    }
+    //Hapus keranjang
+    function hapus_keranjang($id){
+        $this->universal("DELETE From tb_keranjang where keranjang_id='$id'");
+    }
+
+    //ongkos kirim 
+    function ongkos_kirim($prov, $kabkota){
+        $stmt = $this->tampil("SELECT * FROM tb_ongkir  Where provinsi_id='$prov' and kabkota_id='$kabkota'");
+        return $stmt;
+    }
 
     } 
 ?>

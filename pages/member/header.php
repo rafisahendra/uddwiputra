@@ -34,8 +34,11 @@
                         <div class="attr-nav">
                         <ul>
                         <li class="side-menu"><a href="?page=member/keranjang">
-						<i class="fab fa-opencart"></i>
-                            <span class="badge"> 3</span>
+                        <i class="fab fa-opencart"></i>
+                        <?php $krr = $db->jumlah_keranjang($_SESSION['member_id']);?>
+                            
+                            <span class="badge"><?= $krr; ?></span>
+                           
 					</a></li>
                     </ul>
                 </div>
