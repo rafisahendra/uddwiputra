@@ -51,7 +51,7 @@
 
                                    <!-- Button trigger modal -->
                                 <a href="#!" class="cart" data-toggle="modal" data-target="#exampleModal">
-                                Add To Cart
+                                Lihat Detail
                                 </a>
                         </div>
                         </div>
