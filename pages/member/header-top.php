@@ -8,10 +8,10 @@
                         <div id="offer-box" class="carouselTicker">
                             <ul class="offer-box">
                                 <li>
-                                    <i class="fab fa-opencart"></i> UD. Dwiputra Centra Bibit Sawit
+                                    <i class="fas fa-map-marker-alt"></i> UD. Dwiputra Centra Bibit Sawit
                                 </li>
                                 <li>
-                                    <i class="fab fa-opencart"></i> Bangun Rejo, Kinali, Pasaman Barat
+                                    <i class="fas fa-map-marker-alt"></i> Bangun Rejo, Kinali, Pasaman Barat
                                 </li>
                               
                             </ul>

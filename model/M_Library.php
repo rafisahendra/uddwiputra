@@ -126,13 +126,7 @@ class M_Library extends Db{
     } 
     
     //========================= Untuk produk ============================
-    //  untuk Home
-    function tampil_produk8(){
-      
-        $query =  $this->tampil("SELECT* from tb_produk a JOIN tb_kategori b ON a.kategori_id=b.kategori_id order By a.produk_id DESC limit 8");
-        return $query;
-        }
-    // untuk admin
+   
     function tampil_produk(){
       
     $query =  $this->tampil("SELECT* from tb_produk a JOIN tb_kategori b ON a.kategori_id=b.kategori_id");
@@ -224,6 +218,7 @@ class M_Library extends Db{
     } 
 
 //////////////////////////////////====Library For Home====///////////////////////////
+//autentification member login
     function member_register($nama,$email,$pass){
         $tanggal =date('Y-m-d');
         $md5 = md5($pass);
@@ -261,16 +256,19 @@ class M_Library extends Db{
 
     }
 
+    // Tampil member
     function member_tampil($session){
         $query = $this->tampil("SELECT * FROM tb_member  where member_id='$session'");
         return $query;
     }
 
+    // tampil member join kategori join produk
     function member_tampilpk($session){
         $query = $this->tampil("SELECT * FROM tb_member a JOIN tb_provinsi b ON a.provinsi_id=b.provinsi_id JOIN tb_kabkota c ON a.kabkota_id=c.kabkota_id  where member_id='$session'");
         return $query;
     }
 
+    // lengkapi data member
     function lengkapi_data($id, $provinsi,$kabkota,$alamat,$nohp,$pos){
         $stmt = $this->db->prepare("UPDATE tb_member set kabkota_id=:kabkota, provinsi_id=:provinsi, kode_pos=:pos ,member_alamat=:alamat, member_nohp=:nohp where member_id=:id");
         $stmt->execute([':alamat'  =>$alamat,
@@ -281,6 +279,20 @@ class M_Library extends Db{
                         ':id'      =>$id ]);
         $stmt = null;
     }
+
+     // tampil produk 8 di home
+     function tampil_produk8(){
+      
+        $query =  $this->tampil("SELECT* from tb_produk a JOIN tb_kategori b ON a.kategori_id=b.kategori_id order By a.produk_id DESC limit 8");
+        return $query;
+        }
+    
+    // Untuk detai produk join kategori
+    function produk_detail($id_produk){
+      
+        $query =  $this->tampil("SELECT* from tb_produk a JOIN tb_kategori b ON a.kategori_id=b.kategori_id where produk_id='$id_produk' ");
+        return $query;
+        }
 
 
     } 

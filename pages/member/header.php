@@ -34,8 +34,8 @@
                         <div class="attr-nav">
                         <ul>
                         <li class="side-menu"><a href="?page=member/keranjang">
-						<i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
+						<i class="fab fa-opencart"></i>
+                            <span class="badge"> 3</span>
 					</a></li>
                     </ul>
                 </div>

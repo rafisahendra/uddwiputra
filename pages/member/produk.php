@@ -43,16 +43,19 @@
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    <!-- <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li> -->
                                 </ul>
 
  
 
                                    <!-- Button trigger modal -->
-                                <a href="#!" class="cart" data-toggle="modal" data-target="#exampleModal">
-                                Add To Cart
+                                   <form method="POST" action="?page=member/shop-detail">
+                                   <input type="hidden" name="id_produk" value="<?= $p->produk_id?>">
+                                <a href="#!" class="cart" >
+                                    <button type="submit" class="btn-sm" style="background-color:#d33b33; color:#fff" name="add"> lihat Detail</button>                             
                                 </a>
+                                </form>
                         </div>
                         </div>
                         <div class="why-text">
