@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 22, 2019 at 02:28 PM
+-- Generation Time: Nov 25, 2019 at 02:54 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -59,7 +59,7 @@ CREATE TABLE `tb_informasi` (
 --
 
 INSERT INTO `tb_informasi` (`informasi_id`, `judul_informasi`, `keterangan`) VALUES
-(1, 'Tentang Kami', '<h3 style=\"text-align:justify\"><span style=\"font-size:22px\"><strong>UD. Dwi Putra<br></strong></span></h3>\r\n\r\n<p><span style=\"font-size:16px\">Alamat :Bagun rejo, Kinali, Padaman Barat.<br></span></p>\r\n\r\n<p><span style=\"font-size:16px\">Kontak : 0823 8550 563<br></span></p>'),
+(1, 'Tentang Kami', '<h3 style=\"text-align:justify\"><span style=\"font-size:22px\"><strong>UD. DWI PUTRA<br></strong></span></h3>\r\n<ul><li><br><span style=\"font-size:16px\">&nbsp;Desa Bangun Rejo adalah desa yang terdapat kecamatan kinali \r\nkabupaten Pasaman Barat, Di desa ini banyak pengusaha menengah kebawah \r\nyang meproduksi bibit sawit seerta penjualanya salah satu nya yaitu UD. \r\nDWI PUTRA Merupakan home industri kecil yang menampung serta mwnyalurkan\r\n SDA pada desa Bangun Rejo. \r\n						<br>&nbsp;\r\n						</span></li><li><span style=\"font-size:16px\">Pada tahun 2004  UD DWI PUTRA didirikan Oleh Bapak Jakim \r\nselaku pemilik serta Pimpinan pada UD. DWI PUTRA dan kariawanya hanya \r\ntetangga dan sanak keluarga dan pada akhirnya merekrut anggota dari luar\r\n kota untuk pengantaran yang diluar. Pada UD. DWI PUTRA Hingga Pada \r\ntahun 2017 UD. DWI Putra Memiliki 4 (empat) Kendaraan Truk pribadi dalam\r\n untuk mengantrakan Bibit sawit ke pemesan baik dari dalam kota maupun \r\nluar daerah.\r\n				</span></li></ul>\r\n\r\n<p></p>'),
 (2, 'Cara Pemesanan', '<p style=\"text-align:justify\">1. Klik pada tombol \'Beli\' pada barang yang ingin Anda beli/pesan.</p>\r\n\r\n<p style=\"text-align:justify\">2. Barang yang Anda beli/pesan akan masuk ke dalam Keranjang Belanja. Anda dapat menentukan berapa jumlah yang akan dibeli, kemudian klik tombol \'Simpan\'.</p>\r\n\r\n<p style=\"text-align:justify\">3. Jika sudah selesai, klik tombol \'Selesai Belanja\' maka akan tampil data pembeli beserta barang yang dibeli/dipesannya. kemudian klik tombol \'Proses Order\' maka akan tampil total pembayaran serta nomor rekening pembayaran.</p>\r\n\r\n<p style=\"text-align:justify\">4. Apabila telah melakukan pembayaran, maka barang yang dibeli/dipesan akan segera dikirimkan.</p>\r\n\r\n');
 
 -- --------------------------------------------------------
@@ -572,7 +572,29 @@ CREATE TABLE `tb_kategori` (
 INSERT INTO `tb_kategori` (`kategori_id`, `kategori_nama`) VALUES
 (1, 'Sawit Marihat'),
 (2, 'Sawit Sucfindo'),
-(3, 'Sawit Clone');
+(3, 'Sawit Clone'),
+(22, 'Sawit MK');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_keranjang`
+--
+
+CREATE TABLE `tb_keranjang` (
+  `keranjang_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `produk_id` int(11) NOT NULL,
+  `jumlah_beli` int(11) NOT NULL,
+  `tgl_keranjang` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_keranjang`
+--
+
+INSERT INTO `tb_keranjang` (`keranjang_id`, `member_id`, `produk_id`, `jumlah_beli`, `tgl_keranjang`) VALUES
+(3, 4, 20, 1, '2019-11-25');
 
 -- --------------------------------------------------------
 
@@ -615,7 +637,8 @@ CREATE TABLE `tb_member` (
 --
 
 INSERT INTO `tb_member` (`member_id`, `member_nama`, `member_email`, `member_nohp`, `tgl_daftar`, `provinsi_id`, `kabkota_id`, `kode_pos`, `password`, `member_alamat`) VALUES
-(1, 'Rafi Sahendra', 'rafisaehndra@gmail.com', '085363229539', '2019-11-20', 1, 2, '27684', 'admin', 'Padang Panjang');
+(1, 'Rafi Sahendra', 'rafisaehndra@gmail.com', '085363229539', '2019-11-20', 1, 2, '27684', 'admin', 'Padang Panjang'),
+(4, 'PDO Only', 'ayunda@gmail.com', '085656565656', '2019-11-24', 7, 30, '27481', '2df8c55d47933d5ba55c62996a9bb976', 'Sijunjuang');
 
 -- --------------------------------------------------------
 
@@ -662,7 +685,10 @@ CREATE TABLE `tb_produk` (
 INSERT INTO `tb_produk` (`produk_id`, `kategori_id`, `produk_nama`, `gambar_produk`, `produk_tgl`, `produk_harga`, `produk_stok`, `produk_keterangan`) VALUES
 (17, 3, 'Sawit pasaman (Kinali)', '2019111907191577.jpg', '2019-11-20', 175000, 25, 'Sawit mantap'),
 (18, 2, 'Sawit Dharmasraya', '201911200922177.jpg', '2019-11-20', 50000, 15, 'Padang panjang'),
-(19, 3, 'Sawit Medan', '20191120103931sm1.jpg', '2019-11-20', 50000, 10, 'Ullamco perferendis ');
+(19, 22, 'Sawit Medan', '20191120103931sm1.jpg', '2019-11-23', 50000, 10, 'Ullamco perferendis '),
+(20, 2, 'Sawit Kinali Raya', '20191124061130V1.jpg', '2019-11-24', 60000, 19, 'Ipsum recusandae Alyes'),
+(21, 1, 'Sawit Cambah', '20191125051433cv2.jpg', '2019-11-25', 50000, 20, 'Mantap Syekali detail'),
+(22, 2, 'sawit pariaman', '20191125055352flashdisk.jpg', '2019-11-25', 1600, 14, 'Nam ut voluptatem qd');
 
 -- --------------------------------------------------------
 
@@ -722,7 +748,7 @@ INSERT INTO `tb_provinsi` (`provinsi_id`, `nama_provinsi`) VALUES
 --
 
 CREATE TABLE `tb_transaksi` (
-  `transaksi_id` int(11) NOT NULL,
+  `transaksi_id` varchar(15) NOT NULL,
   `tgl_transaksi` date NOT NULL DEFAULT current_timestamp(),
   `member_id` int(11) NOT NULL,
   `total_bayar` int(11) NOT NULL,
@@ -734,9 +760,23 @@ CREATE TABLE `tb_transaksi` (
 --
 
 INSERT INTO `tb_transaksi` (`transaksi_id`, `tgl_transaksi`, `member_id`, `total_bayar`, `status`) VALUES
-(1, '2019-10-28', 52, 460000, 'Transaksi Selesai'),
-(2, '2019-10-28', 52, 1860000, 'Transaksi Selesai'),
-(3, '2019-10-28', 52, 280000, 'Proses Pengiriman');
+('1', '2019-10-28', 52, 460000, 'Transaksi Selesai'),
+('2', '2019-10-28', 52, 1860000, 'Transaksi Selesai'),
+('3', '2019-10-28', 52, 280000, 'Proses Pengiriman');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_transaksi_detail`
+--
+
+CREATE TABLE `tb_transaksi_detail` (
+  `detail_id` int(11) NOT NULL,
+  `transaksi_id` varchar(15) NOT NULL,
+  `produk_id` int(11) NOT NULL,
+  `jumlah_beli` int(11) NOT NULL,
+  `jumlah_bayar` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -766,6 +806,12 @@ ALTER TABLE `tb_kabkota`
 --
 ALTER TABLE `tb_kategori`
   ADD PRIMARY KEY (`kategori_id`);
+
+--
+-- Indexes for table `tb_keranjang`
+--
+ALTER TABLE `tb_keranjang`
+  ADD PRIMARY KEY (`keranjang_id`);
 
 --
 -- Indexes for table `tb_konfirmasi`
@@ -805,6 +851,12 @@ ALTER TABLE `tb_transaksi`
   ADD KEY `id_konsumen` (`member_id`);
 
 --
+-- Indexes for table `tb_transaksi_detail`
+--
+ALTER TABLE `tb_transaksi_detail`
+  ADD PRIMARY KEY (`detail_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -824,7 +876,13 @@ ALTER TABLE `tb_informasi`
 -- AUTO_INCREMENT for table `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `tb_keranjang`
+--
+ALTER TABLE `tb_keranjang`
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_konfirmasi`
@@ -836,7 +894,7 @@ ALTER TABLE `tb_konfirmasi`
 -- AUTO_INCREMENT for table `tb_member`
 --
 ALTER TABLE `tb_member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_ongkir`
@@ -848,13 +906,19 @@ ALTER TABLE `tb_ongkir`
 -- AUTO_INCREMENT for table `tb_produk`
 --
 ALTER TABLE `tb_produk`
-  MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tb_provinsi`
 --
 ALTER TABLE `tb_provinsi`
   MODIFY `provinsi_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `tb_transaksi_detail`
+--
+ALTER TABLE `tb_transaksi_detail`
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
