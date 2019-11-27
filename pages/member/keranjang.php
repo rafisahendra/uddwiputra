@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-9">
-                    <div class="table-main table-responsive">
+                    <div class=" table-responsive">
                         <table class="table ">
                             <thead>
                                 <tr>
@@ -43,10 +43,16 @@
                            $hasil=0;
                            foreach($db->tampil_keranjang($_SESSION['member_id']) as $i=> $k): ?>
                             <? $subtotal = $k->produk_harga * $k->jumlah_beli ?>
-
-
-                         
-                            <?php $hasil = $hasil += $subtotal ; ?>
+                            <?php $hasil = $hasil += $subtotal ; 
+                            
+                            $krr = $db->jumlah_keranjang($_SESSION['member_id']);
+                            if($krr == NULL ){
+                                ?>
+                               <tr>
+                               <td><?= 'Keranjang Belanja Kosong, Silahkan Pilih Produk Dan belanja'?></td>
+                               </tr>
+                               <?php
+                            }else{ ?>
            
                            
                                 <tr>
@@ -78,8 +84,10 @@
 								</a>
                                     </td>
                                 </tr>
-                               
+                                <?php } ?>
                             <?php endforeach ?>
+
+                        
                             
                             </tbody>
                         </table>
@@ -91,7 +99,7 @@
                         <h3>Order Detail</h3>
                         <div class="d-flex">
                             <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold">Rp <?= $hasil ?> </div>
+                            <div class="ml-auto font-weight-bold text-right">Rp <?= number_format($hasil,2) ?> </div>
                         </div>
                         <div class="d-flex">
 
@@ -103,25 +111,37 @@
                         <?php endforeach ?>
                             <h4>Ongkos Kirim</h4>
                             <?php foreach($db->ongkos_kirim($prov,$kabkota) as $o) :?>
-                            <div class="ml-auto font-weight-bold">Rp <?= $o->ongkos_kirim ?></div>
+                            <div class="ml-auto font-weight-bold text-right">Rp <?= number_format($o->ongkos_kirim,2) ?></div>
                             <?php endforeach ?>
                         </div>
                         <hr class="my-1">
-                       
+                        <form action="../controller/HomeController.php?aksi=tambah_transaksi" method="POST" >
                         <div class="d-flex">
                             <h4>Pesan</h4> <br>
-                            <input type="text" class="form-group ml-auto font-weight-bold   ">
+                            <input type="text" name="pesan" class="form-group ml-auto font-weight-bold   ">
                            
                         </div>
                        
                         <hr>
                         <div class="d-flex gr-total">
-                            <h5>Total keseluruhan</h5>
-                            <div class="ml-auto h5">Rp <?= $hasil + $o->ongkos_kirim ?></div>
+                            <h5>Total </h5>
+                            <div class="ml-auto h5">Rp <?= number_format($hasil + $o->ongkos_kirim,2 )?></div>
                         </div>
                         <hr> </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="checkout.html" class="ml-auto btn hvr-hover">Checkout</a> </div>
+
+             
+                    <input type="hidden" name="id_member" value="<?= $_SESSION['member_id'] ?>">
+                    <input type="hidden" name="id_ongkir" value="<?= $o->ongkir_id ?>">
+                    <input type="hidden" name="jumlah_bayar" value="<?= $hasil + $o->ongkos_kirim ?>">
+
+                    <a style="margin-left:870px;" href="#!" class="cart"> 
+                     <button style="color:white"  type='submit' data-fancybox-close=""  class="btn hvr-hover"><span class="fa fa-check"> </span> Checkout</button></a>
+
+               
+
+               
+                </form>
         
             </div>
 

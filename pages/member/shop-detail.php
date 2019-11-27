@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2>Shop Detail</h2>
+          
 
             </div>
         </div>
@@ -47,8 +48,8 @@
                         <form method="POST" action="../controller/HomeController.php?aksi=tambah_keranjang">
                             <div class="form-group quantity-box">
                                 <label class="control-label">Quantity</label>
-                                <input class="form-control" name="beli" min="0" max="20" placeholder="hanya angka" type="number" required>
-                                <span class="available-stock"> Jumlah Stok : 20 Tersedia <a href="#"> </a></span>
+                                <input class="form-control" name="beli" min="0" max="<?= $detail->produk_stok?>" placeholder="hanya angka" type="number" required>
+                                <span class="available-stock"> Jumlah Stok : <?= $detail->produk_stok?> Tersedia <a href="#"> </a></span>
 
                             </div>
 
@@ -57,7 +58,7 @@
                 </li>
                 </ul>
 
-                <div class="price-box-bar">
+                <div class="price-box-bar" >
                     <div class="cart-and-bay-btn">
                       
                             <input type="hidden" name="id_produk" value="<?= $detail->produk_id?>">
@@ -68,7 +69,7 @@
 
                             <a href="#!" class="cart">
                                 <button style="color:white" type="submit" data-fancybox-close="" class="btn hvr-hover"
-                                    name="btn_cart"><span class="fab fa-opencart"></span> Masukan Keranjang</button>
+                                    name=""><span class="fab fa-opencart"></span> Masukan Keranjang</button>
                         </form>
 
                         <form>

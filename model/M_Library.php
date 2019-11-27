@@ -30,25 +30,25 @@ class M_Library extends Db{
 
 // =======================Tampil Jumlah Form Di Admin===========================
     function jumlah_kategori(){
-       $kategori = $this->jumlah("SELECT count(*) FROM tb_kategori ");
+       $kategori = $this->jumlah_fetchColumn("SELECT count(*) FROM tb_kategori ");
        return $kategori;
       
     }
 
     function jumlah_produk(){
-       $produk = $this->jumlah("SELECT count(*) FROM tb_produk ");
+       $produk = $this->jumlah_fetchColumn("SELECT count(*) FROM tb_produk ");
        return $produk;
       
     }
 
     function jumlah_transaksi(){
-        $transaksi = $this->jumlah("SELECT count(*) FROM tb_transaksi");
+        $transaksi = $this->jumlah_fetchColumn("SELECT count(*) FROM tb_transaksi");
         return $transaksi;
     }
 
 
     function jumlah_member(){
-       $member = $this->jumlah("SELECT count(*) FROM tb_member ");
+       $member = $this->jumlah_fetchColumn("SELECT count(*) FROM tb_member ");
        return $member;
       
     }
@@ -68,14 +68,14 @@ class M_Library extends Db{
     
     function ganti_tentang($judul,$keterangan){
       $stmt = $this->db->prepare(" UPDATE tb_informasi SET judul_informasi=:jdl, keterangan=:ket WHERE `informasi_id`=1");
-      $stmt->execute(['jdl'=> $judul,
-                      'ket' => $keterangan]); 
+      $stmt->execute([':jdl'=> $judul,
+                      ':ket' => $keterangan]); 
  
     }
     function ganti_informasi($judul,$keterangan){
         $stmt = $this->db->prepare(" UPDATE tb_informasi SET judul_informasi=:jdl, keterangan=:ket WHERE `informasi_id`=2");
-        $stmt->execute(['jdl'=> $judul,
-                        'ket' => $keterangan]);
+        $stmt->execute([':jdl'=> $judul,
+                        ':ket' => $keterangan]);
          
       }
        
@@ -219,6 +219,25 @@ class M_Library extends Db{
     } 
 
 //////////////////////////////////====Library For Home====///////////////////////////
+
+// ========================= Tampil jumlah Di Home ================================
+
+    // public function jumlah_keranjang($id_member){
+    // $row=[];
+    // $query = $this->db->prepare("SELECT * FROM tb_keranjang where member_id='$id_member'");
+    // $query ->execute(); 
+    // $row = $query->rowcount();
+  
+    //  return $row;
+    // }
+    public function jumlah_keranjang($id_member){
+        $query = $this->jumlah_rowCount("SELECT * FROM tb_keranjang where member_id='$id_member'");
+        return $query;
+       }
+
+     
+
+
 //autentification member login
     function member_register($nama,$email,$pass){
         $tanggal =date('Y-m-d');
@@ -300,23 +319,12 @@ class M_Library extends Db{
         function tambah_keranjang($id_member,$id_produk, $beli){
          $tanggal = date('Y-m-d');
          $stmt = $this->db->prepare("INSERT INTO `tb_keranjang`(`member_id`, `produk_id`, `jumlah_beli`, `tgl_keranjang`) VALUES(:member,:produk,:beli,:tgl)");
-          $stmt->execute(['member'   => $id_member,
-                          'produk'   => $id_produk,
-                          'beli'     => $beli,
-                          'tgl'      => $tanggal]);
+          $stmt->execute([':member'   => $id_member,
+                          ':produk'   => $id_produk,
+                          ':beli'     => $beli,
+                          ':tgl'      => $tanggal]);
         }
 
-    // count di keranjang
-    public function jumlah_keranjang($id_member){
-
-
-    $row=[];
-    $query = $this->db->prepare("SELECT * FROM tb_keranjang where member_id='$id_member'");
-    $query ->execute(); 
-    $row = $query->rowcount();
-  
-     return $row;
-    }
 
     //tampil Keranjang 
     public function tampil_keranjang($id_member){
@@ -333,6 +341,61 @@ class M_Library extends Db{
     function ongkos_kirim($prov, $kabkota){
         $stmt = $this->tampil("SELECT * FROM tb_ongkir  Where provinsi_id='$prov' and kabkota_id='$kabkota'");
         return $stmt;
+    }
+
+
+    function tambah_transaksi($id_member,$id_ongkir, $jumlah_bayar,$pesan){
+
+			$a = date('Y-m-d-h-i-s');
+			$krr = explode('-',$a);
+			$id_transaksi = implode("",$krr);
+            $id_member = $_POST['id_member'];
+            $id_ongkir =$_POST['id_ongkir'];
+			$jumlah_bayar = $_POST['jumlah_bayar'];
+			$tgl_sekarang = date('Y-m-d');
+            $status = "Belum Konfirmasi";
+            $pesan = $_POST['pesan'];
+		
+            $sqltambahorder = $this->db->prepare("INSERT INTO `tb_transaksi`(`transaksi_id`, `tgl_transaksi`, `member_id`, `total_bayar`, `status`,ongkir_id,pesan_pemesanan) VALUES ('$id_transaksi','$tgl_sekarang','$id_member','$jumlah_bayar','$status','$id_ongkir','$pesan ')");
+            $sqltambahorder->execute();
+
+			//mengambil nilai no order
+            $sqltampilorder = $this->db->prepare("SELECT `transaksi_id` FROM `tb_transaksi` WHERE `member_id`='$id_member' AND `total_bayar`='$jumlah_bayar' AND `status`='$status'  AND  `tgl_transaksi`='$tgl_sekarang'");
+            $sqltampilorder->execute();
+			$zz_id = $sqltampilorder->fetch(PDO::FETCH_ASSOC);
+			$idcartorder =  $zz_id['transaksi_id'];
+
+
+			// ambil data cart
+            $sqlkeranjang = $this->db->prepare("SELECT * FROM tb_keranjang a JOIN tb_produk b ON a.produk_id=b.produk_id  WHERE `member_id`='$id_member'");
+            $sqlkeranjang->execute();
+			while ($ambilnilai = $sqlkeranjang->fetch(PDO::FETCH_ASSOC)) {
+				$subtotal = $ambilnilai['produk_harga']*$ambilnilai['jumlah_beli'];
+                $sqltransaksi_detail = $this->db->prepare("INSERT INTO `tb_transaksi_detail`( `transaksi_id`, `produk_id`, `jumlah_beli`, `subtotal`) VALUES ('$idcartorder','$ambilnilai[produk_id]','$ambilnilai[jumlah_beli]','$subtotal')");
+                $sqltransaksi_detail->execute();
+
+				// $sqlp = mysqli_query($db, "SELECT idproduk,stokproduk FROM produk WHERE idproduk='$ambilnilai[jumlahbeli]' ");
+				// $c_bl = mysqli_fetch_array($sqlp);
+				// $stk= $c_bl['stokproduk'] - $ambilnilai['jumlahbeli'];
+				// if ($stk < 0) {
+				// 	// echo $stk;
+				// }
+				// else{
+				// 	$aa = mysqli_query($db, "UPDATE produk SET stokproduk='$stk' WHERE idproduk='$ambilnilai[idproduk]'");
+				// }
+			}
+			if ($sqltransaksi_detail) {
+                $hapus_keranjang = $this->db->prepare("DELETE FROM `tb_keranjang` WHERE member_id='$id_member'");
+                $hapus_keranjang->execute();
+			}
+			else{
+				echo "<script>alert('Data Keranjang Kosong');</script>";	
+			}
+			
+			
+
+		
+
     }
 
     } 

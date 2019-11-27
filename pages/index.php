@@ -8,6 +8,8 @@
 <body>
 <?php //include 'home/header-top.php'; ?>
 <?php include 'home/header.php'; ?>
+
+
 <?php //include 'home/kategori.php'; ?>
 <?php include 'content.php'; ?>
 <?php //include 'home/blog.php'; ?>

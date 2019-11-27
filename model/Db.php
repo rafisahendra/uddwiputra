@@ -3,14 +3,15 @@ class Db {
 
      function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_bibit','root','');
+        $this->db = new PDO("mysql:host=localhost;dbname=db_bibit",'root','');
     }
+
 
     public function tampil($sql){
         $hasil=[];
         $query = $this->db->prepare($sql);
         $query->execute();
-        while($data = $query->fetchobject()){
+        while($data = $query->fetchObject()){
         $hasil[]=$data;
         }
         return $hasil;
@@ -23,8 +24,7 @@ class Db {
     
     }
 
-
-   public function jumlah($sql){
+   public function jumlah_fetchColumn($sql){
         $hasil=[];
         $query  = $this->db->prepare($sql); 
         $query ->execute(); 
@@ -34,12 +34,20 @@ class Db {
          return $hasil;
     }
    
+    public function jumlah_rowCount($sql){
+        $row=[];
+        $query = $this->db->prepare($sql);
+        $query ->execute(); 
+        $row = $query->rowCount();  
+         return $row;
+        }
 
 
-   
  
 }
 
 ?>
 
 <!-- test yo -->
+
+
