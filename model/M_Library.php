@@ -80,6 +80,30 @@ class M_Library extends Db{
       }
        
      
+// ======================== / Json Tampil   ambil_nilai ============================
+    // function ambil_cari_order($id_js){
+      
+
+    // // buat query untuk ambil data dari database
+
+    // $sql = $this->db->prepare("SELECT * FROM `tb_transaksi` JOIN `tb_member` USING (member_id) WHERE transaksi_id='$id_js'");
+
+    // $result = array();
+    // while($row = mysqli_fetch_array($query)){
+    
+    //     array_push($result, 
+    //         array(
+    //             'idorder'=>$row[1],
+    //         'namaorder'=>$row[8],
+    //         'tglorder'=>$row[2],  
+    //         'totalbelanja'=>$row[3],
+    //         'status' =>$row[4]    		
+    //             ));
+    // }
+    // echo json_encode(array($result));
+
+    // }
+
 //========================= / Untuk kategori ============================
     function tampil_admin(){
       
@@ -110,7 +134,7 @@ class M_Library extends Db{
     return $query;
     }
     function tambah_kategori($nama){
-    $stmt = $this->db->prepare("INSERT into tb_kategori (kategori_nama)values(:nma)");
+    $stmt = $this->db->prepare("INSERT into tb_kategori (kategori_nama)values('$nama')");
     $stmt->execute([':nma' => $nama]);
     $stmt = null;
   
@@ -356,11 +380,11 @@ class M_Library extends Db{
             $status = "Belum Konfirmasi";
             $pesan = $_POST['pesan'];
 		
-            $sqltambahorder = $this->db->prepare("INSERT INTO `tb_transaksi`(`transaksi_id`, `tgl_transaksi`, `member_id`, `total_bayar`, `status`,ongkir_id,pesan_pemesanan) VALUES ('$id_transaksi','$tgl_sekarang','$id_member','$jumlah_bayar','$status','$id_ongkir','$pesan ')");
+            $sqltambahorder = $this->db->prepare("INSERT INTO `tb_transaksi`(`transaksi_id`, `tgl_pesan`, `member_id`, `total_bayar`, `status`,ongkir_id,pesan_pemesanan) VALUES ('$id_transaksi','$tgl_sekarang','$id_member','$jumlah_bayar','$status','$id_ongkir','$pesan ')");
             $sqltambahorder->execute();
 
 			//mengambil nilai no order
-            $sqltampilorder = $this->db->prepare("SELECT `transaksi_id` FROM `tb_transaksi` WHERE `member_id`='$id_member' AND `total_bayar`='$jumlah_bayar' AND `status`='$status'  AND  `tgl_transaksi`='$tgl_sekarang'");
+            $sqltampilorder = $this->db->prepare("SELECT `transaksi_id` FROM `tb_transaksi` WHERE `member_id`='$id_member' AND `total_bayar`='$jumlah_bayar' AND `status`='$status'  AND  `tgl_pesan`='$tgl_sekarang'");
             $sqltampilorder->execute();
 			$zz_id = $sqltampilorder->fetch(PDO::FETCH_ASSOC);
 			$idcartorder =  $zz_id['transaksi_id'];
@@ -391,11 +415,13 @@ class M_Library extends Db{
 			else{
 				echo "<script>alert('Data Keranjang Kosong');</script>";	
 			}
-			
-			
+					
 
-		
+    }
 
+    function daftar_pembelian($id_member){
+        $stmt = $this->tampil("SELECT * FROM tb_transaksi a JOIN tb_member b ON a.member_id=b.member_id where a.member_id ='$id_member'");
+        return $stmt;
     }
 
     } 

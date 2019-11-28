@@ -42,51 +42,40 @@
                             <tbody>
                            <?php 
                            $hasil=0;
-                           foreach($db->tampil_keranjang($_SESSION['member_id']) as $i=> $k): ?>
-                            <? $subtotal = $k->produk_harga * $k->jumlah_beli ?>
-                            <?php $hasil = $hasil += $subtotal ; 
-                            
-                            $krr = $db->jumlah_keranjang($_SESSION['member_id']);
-                            if($krr == NULL ){
-                                ?>
-                               <tr>
-                               <td><?= 'Keranjang Belanja Kosong, Silahkan Pilih Produk Dan belanja'?></td>
-                               </tr>
-                               <?php
-                            }else{ ?>
-           
-                           
+                           foreach($db->daftar_pembelian($_SESSION['member_id']) as $i=> $k): ?>
+                        
+                         
                                 <tr>
                                     <td><?= $i+1; ?></td>
                                     <td class="thumbnail-img">
                                         <a href="#">
-									<img class="img-fluid" style="height:70px;width:70px;" src="../images/produk/<?= $k->gambar_produk ?>" alt="" />
+									<?= $k->transaksi_id?>
 								</a>
                                     </td>
                                     <td class="name-pr">
                                         <a href="#">
-                                        <?= $k->produk_nama ?>
+                                        <?= $k->member_nama ?>
 								</a>
                                     </td>
                                     <td class="price-pr">
-                                        <p>Rp <?=number_format($k->produk_harga,2) ?></p>
+                                        <p> <?= $k->tgl_pesan ?></p>
                                     </td>
                                     </td>
                                     <td class="price-pr">
-                                        <p><?= $k->jumlah_beli ?></p>
+                                        <p><?= $k->total_bayar ?></p>
                                     </td>
-                                    <!-- <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td> -->
+                                
                                     <td class="total-pr">
-                                        <p>Rp <?= number_format($subtotal,2) ?></p>
+                                        <p><?= $k->status ?></p>
                                     </td>
                                     <td class="remove-pr">
                                         <a href="../controller/HomeController.php?aksi=hapus_keranjang&id=<?= $k->keranjang_id ?>"> 
                                     
-									<i class="fas fa-times"></i>
+									<i class="fas fa-print"> Cetak</i>
 								</a>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                            
                             <?php endforeach ?>
 
                         

@@ -43,7 +43,7 @@ if($aksi == 'change'){
         header('location:../pages/indexs.php?page=member/keranjang');
     }elseif($aksi == 'tambah_transaksi'){
         $db->tambah_transaksi($_POST['id_member'],$_POST['id_ongkir'],$_POST['jumlah_bayar'],$_POST['pesan']);
-        header('location:../pages/indexs.php?page=member/keranjang');
+        header('location:../pages/indexs.php?page=member/pesanan');
     }
 ?>
 
