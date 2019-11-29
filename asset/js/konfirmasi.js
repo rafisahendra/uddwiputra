@@ -24,12 +24,12 @@ xhttp.onreadystatechange = function()
 
           for(i = 0; i < myArr.length; i++) 
           {
-          	alert(myArr[i][0].idorder);
+          	alert(myArr[i][0].idorder+myArr[i][0].namaorder);
             document.getElementById("namaorder").innerHTML=": " +myArr[i][0].namaorder;
             document.getElementById("tglorder").innerHTML=": " +myArr[i][0].tglorder;
             document.getElementById("status_ord").innerHTML=": " +myArr[i][0].status;
-            document.getElementById("totalbelanja").innerHTML=": " +myArr[i][0].totalbelanja;idOrder 
-            document.getElementById("idOrder").value=myArr[i][0].idorder;
+            document.getElementById("totalbelanja").innerHTML=": " +myArr[i][0].totalbelanja;transaksi_id 
+            document.getElementById("transaksi_id").value=myArr[i][0].idorder;
           }
 
          }
