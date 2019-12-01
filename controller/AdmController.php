@@ -54,6 +54,12 @@ if($aksi == 'change'){
     }elseif($aksi == 'update_ongkir'){
         $db->update_ongkir($_POST['id'], $_POST['p_id'],$_POST['k_id'],$_POST['ongkos_k']);
         header('location:../admin/pages/index.php?module=ongkir/view');
+    }elseif($aksi=='hapus_transaksi'){
+        $db->hapus_transaksi($_GET['id']);
+        header('location:../admin/pages/index.php?module=transaksi/view');
+    }elseif($aksi=='status_transaksi'){
+        $db->status_transaksi($_GET['id'],$_POST['status']);
+        header('location:../admin/pages/index.php?module=transaksi/view');
     }
 
 ?>

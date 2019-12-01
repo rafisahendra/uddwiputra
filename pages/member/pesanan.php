@@ -69,7 +69,7 @@
                                         <p><?= $k->status ?></p>
                                     </td>
                                     <td class="remove-pr">
-                                        <a href="../controller/HomeController.php?aksi=hapus_keranjang&id=<?= $k->keranjang_id ?>"> 
+                                        <a href="member/cetakstruk.php?id=<?= $k->transaksi_id ?>"> 
                                     
 									<i class="fas fa-print"> Cetak</i>
 								</a>

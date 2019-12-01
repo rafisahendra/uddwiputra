@@ -24,7 +24,7 @@ xhttp.onreadystatechange = function()
 
           for(i = 0; i < myArr.length; i++) 
           {
-          	alert(myArr[i][0].idorder+myArr[i][0].namaorder);
+          	alert("NO Order : "+myArr[i][0].idorder+"\n"+"Nama : "+myArr[i][0].namaorder+"\n"+"Status : "+myArr[i][0].status  );
             document.getElementById("namaorder").innerHTML=": " +myArr[i][0].namaorder;
             document.getElementById("tglorder").innerHTML=": " +myArr[i][0].tglorder;
             document.getElementById("status_ord").innerHTML=": " +myArr[i][0].status;

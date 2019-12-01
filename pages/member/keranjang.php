@@ -125,7 +125,7 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Total </h5>
-                            <div class="ml-auto h5">Rp <?= number_format($hasil + $o->ongkos_kirim,2 )?></div>
+                            <div class="ml-auto h5">Rp <?= number_format(@$hasil + @$o->ongkos_kirim,2 )?></div>
                         </div>
                         <hr> </div>
                 </div>

@@ -242,6 +242,29 @@ class M_Library extends Db{
     $stmt = null;
     } 
 
+//========================= Untuk Transaksi ============================
+    function tampil_transaksi(){
+        $stmt = $this->tampil("SELECT * FROM tb_transaksi a JOIN tb_member b ON  a.member_id=b.member_id");
+     
+        return $stmt;
+    }
+
+    function hapus_transaksi($id){
+        $query = $this->universal("DELETE From tb_transaksi where transaksi_id=$id");
+        return $query;
+    }
+
+    function status_transaksi( $id, $status){
+
+
+     
+
+
+        // echo "   UPDATE `tb_transaksi` SET `status`='$status' WHERE `transaksi_id`='$id'";exit;
+        $query = $this->universal("UPDATE `tb_transaksi` SET `status`='$status' WHERE `transaksi_id`='$id'");
+        return $query;
+    }
+
 //////////////////////////////////====Library For Home====///////////////////////////
 
 // ========================= Tampil jumlah Di Home ================================
@@ -434,6 +457,28 @@ class M_Library extends Db{
         $stat = $this->universal("INSERT INTO `tb_konfirmasi`( `transaksi_id`, `bank_pengirim`, `bank_penerima`, `nama_pengirim`, `tgl_transfer`, `jumlah_transfer`, `bukti_transfer`) VALUES('$id','$b_pengirim','$b_penerima','$nama','$tgl','$j_kirim','$nama_baru')");
         return $stat;
     }
+
+
+    function tampil_ord_member($id_order){
+      
+        $query = $this->tampil("SELECT * FROM tb_transaksi a  JOIN tb_member c ON a.member_id=c.member_id JOIN tb_ongkir d ON a.ongkir_id = d.ongkir_id  WHERE a.transaksi_id='$id_order'");
+
+        return $query;
+    }
+
+    function tampil_ord_detail($id_order){
+      
+        $query = $this->tampil("SELECT * FROM `tb_transaksi_detail` a JOIN `tb_produk` b ON a.produk_id = b.produk_id  WHERE transaksi_id = '$id_order'");
+
+        return $query;
+    
+    }
+
+    function tampil_ord_totalbayar($id_order){
+        $jumlah = $this->tampil("SELECT SUM(subtotal) AS total FROM `tb_transaksi_detail` WHERE transaksi_id='$id_order'");
+        return $jumlah;
+    }
+
 
     } 
 ?>

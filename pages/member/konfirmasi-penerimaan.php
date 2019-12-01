@@ -10,4 +10,12 @@
   //   }
   // }
 
-  20191126073521 
+  <?php
+include 'koneksi.php';
+
+	$id = $_GET['id'];
+	$sqlorder = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM `order` JOIN kota USING (idkota) JOIN `anggota` USING (idanggota) WHERE idorder = '$id'"));
+
+
+
+?>
