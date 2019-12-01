@@ -18,9 +18,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Thewayshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> UD Dwiputra</strong></h1>
+                            <p class="m-b-40">Pusat Industri <br> dan distribusi bibit sawit unggul</p>
+                            <p><a class="btn hvr-hover" href="#">Belanja Sekarang</a></p>
                         </div>
                     </div>
                 </div>
@@ -30,9 +30,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Thewayshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> UD Dwiputra</strong></h1>
+                            <p class="m-b-40">belanja amanah<br> online payment</p>
+                            <p><a class="btn hvr-hover" href="#">Belanja Sekarang</a></p>
                         </div>
                     </div>
                 </div>
@@ -42,9 +42,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Thewayshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> UD Dwiputra</strong></h1>
+                            <p class="m-b-40">Bibit Unggul<br> Kelapa Sawit.</p>
+                            <p><a class="btn hvr-hover" href="#">Belanja Sekarang</a></p>
                         </div>
                     </div>
                 </div>

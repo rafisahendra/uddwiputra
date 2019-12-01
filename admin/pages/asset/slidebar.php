@@ -4,9 +4,9 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon ">
-          <img src="../../images/logo/mm.png" width="50px">
+          <img src="../../images/logo/logo.png" width="50px">
         </div>
-        <div class="sidebar-brand-text mx-3">Administrator<sup></sup></div>
+        <div class="sidebar-brand-text mx-3"><img src="../../images/logo/dp.png" width="120px"><sup></sup></div>
         
       </a>
 
@@ -72,9 +72,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Menu Laporan</h6>
            <!--  <a class="collapse-item" href="utilities-color.html">Laporan Produk</a> -->
-            <a class="collapse-item" href="utilities-border.html">Laporan Harian</a>
-            <a class="collapse-item" href="utilities-animation.html">Laporan Bulanan</a>
-            <a class="collapse-item" href="utilities-other.html">Laporan Tahunan</a>
+            <a class="collapse-item" href="?module=laporan/harian">Laporan Harian</a>
+            <a class="collapse-item" href="?module=laporan/bulanan">Laporan Bulanan</a>
+            <a class="collapse-item" href="?module=laporan/tahunan">Laporan Tahunan</a>
           </div>
         </div>
       </li>

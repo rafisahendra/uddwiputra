@@ -450,12 +450,19 @@ class M_Library extends Db{
 
 
     function tambah_konfirmasi( $id, $nama, $b_pengirim, $b_penerima, $j_kirim, $tgl ,$upload, $lokasi){
-        $nama_baru = date('Ymdhis').$upload;
+    
+        $status='Kofirmasi Pembayaran';
+        $query = $this->db->prepare("UPDATE `tb_transaksi` SET `status`='$status' WHERE `transaksi_id`='$id'");
+        $query->execute();
 
-          move_uploaded_file($lokasi,"../images/konfirmasi/".$nama_baru);
-        
+        $nama_baru = date('Ymdhis').$upload;
+        move_uploaded_file($lokasi,"../images/konfirmasi/".$nama_baru);
+    
         $stat = $this->universal("INSERT INTO `tb_konfirmasi`( `transaksi_id`, `bank_pengirim`, `bank_penerima`, `nama_pengirim`, `tgl_transfer`, `jumlah_transfer`, `bukti_transfer`) VALUES('$id','$b_pengirim','$b_penerima','$nama','$tgl','$j_kirim','$nama_baru')");
         return $stat;
+
+
+
     }
 
 
@@ -479,6 +486,10 @@ class M_Library extends Db{
         return $jumlah;
     }
 
+    function tampil_konfirmasi($id_order){
+        $query = $this->tampil("SELECT * FROM `tb_konfirmasi` WHERE transaksi_id = '$id_order'");
+        return $query;
+    }
 
     } 
 ?>
