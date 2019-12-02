@@ -39,8 +39,9 @@
             <td><img style="width:100px;height:100px;" src="../../images/produk/<?= $d->gambar_produk ?>" alt="No Gambar"></td>
             <td><?= $d->produk_nama ?></td>
             <td><?= $d->kategori_nama ?></td>
+            <td>Rp <?= $d->produk_harga ?></td>
             <td><?= $d->produk_stok ?></td>
-            <td><?= $d->produk_harga ?></td>
+            
             <td><?= $d->produk_keterangan ?></td>
             <?php   $id_kategori = $d->kategori_id ?>
             <td>

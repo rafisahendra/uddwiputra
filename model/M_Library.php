@@ -17,7 +17,8 @@ class M_Library extends Db{
                 session_start();
                 $_SESSION['admin_id']	 = $data->admin_id;
                 $_SESSION['username']	   = $data->username;
-                $_SESSION['password']	   = $data->password;
+                $_SESSION['level']	   = $data->level;
+           
             }
     }
 }  
@@ -105,9 +106,9 @@ class M_Library extends Db{
     // }
 
 //========================= / Untuk kategori ============================
-    function tampil_admin(){
+    function tampil_admin($id){
       
-    $query =  $this->tampil("SELECT* from tb_admin");
+    $query =  $this->tampil("SELECT* from tb_admin where admin_id = $id");
     return $query;
     }
 
@@ -315,7 +316,9 @@ class M_Library extends Db{
                 $_SESSION['member_nama']	   = $data->member_nama;
                 $_SESSION['member_email']	   = $data->member_email;
                
+               
     }
+    // var_dump($row);exit;
     }  
     function member_logout(){
     session_start();

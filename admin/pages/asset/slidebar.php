@@ -29,6 +29,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+      <?php if($_SESSION['level']== 'admin'){ ?>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-table"></i>
@@ -59,9 +60,9 @@
           </div>
         </div>
       </li>
+      <?php } ?>
 
-
-
+      <?php if($_SESSION['level']== 'admin' || $_SESSION['level']== 'pimpinan'){ ?>
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -94,7 +95,7 @@
           <i class="fas fa-fw fa-lock"></i>
           <span>Ubah Password</span></a>
       </li>
-
+      <?php } ?>
    
 
       <!-- Divider -->

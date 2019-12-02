@@ -16,17 +16,21 @@ if($aksi == 'change'){
         echo"<script>window.location='../admin/pages/index.php?module=home/change-password';</script>";
     }
     }elseif($aksi == 'login'){
-        
-        $db->member_login($_POST['email'],$_POST['password']);
-          echo"<script>alert('Login berhasil ');</script>";
+      $db->member_login($_POST['email'],$_POST['password']);
+      if(@$_SESSION['member_nama']== TRUE){
+          echo"<script>alert('Login berhasil $_SESSION[member_nama]');</script>";
           echo"<script>window.location='../pages/indexs.php';</script>";
-       
+      }else{
+        echo"<script>alert('Username dan password tidak Valid!');</script>";
+        echo"<script>window.location='../pages/index.php?page=home/login';</script>";
+      }
     }elseif($aksi == 'logout'){
-       $db->member_logout();
+        $db->member_logout();
         header('location:../pages/index.php?page=home/login');
     }elseif($aksi == 'registrasi'){
         $db->member_register($_POST['nama'],$_POST['email'],$_POST['password']);
-         header('location:../pages/index.php?page=home/login');
+          echo"<script>alert('Registrasi berhasil ');</script>";
+          echo"<script>window.location='../pages/index.php?page=home/login';</script>";
      }elseif($aksi == 'lengkapi_data'){
         $db->lengkapi_data($_POST['id'],$_POST['id_provinsi'],$_POST['id_kabkota'],$_POST['alamat'],$_POST['nohp'],$_POST['kode_pos']);
         header('location:../admin/pages/index.php?module=kategori/view');

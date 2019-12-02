@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2019 at 06:34 PM
+-- Generation Time: Dec 02, 2019 at 06:36 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -40,7 +40,8 @@ CREATE TABLE `tb_admin` (
 --
 
 INSERT INTO `tb_admin` (`admin_id`, `username`, `password`, `level`) VALUES
-(1, 'admin', '$2y$10$mdMEMwH8kV3IdDHRSo0raeFMfn8sNJV1Zmj7bLj66584QLlaJ8uzq', 'admin');
+(1, 'admin@admin.com', '$2y$10$zPuKdXkO6t7NJLkIhGukJuqhETXz812Okvm/yd2fp7ADeaxRNCvvi', 'admin'),
+(2, 'pimpinan@pimpinan.com', '$2y$10$mdMEMwH8kV3IdDHRSo0raeFMfn8sNJV1Zmj7bLj66584QLlaJ8uzq', 'pimpinan');
 
 -- --------------------------------------------------------
 
@@ -570,10 +571,10 @@ CREATE TABLE `tb_kategori` (
 --
 
 INSERT INTO `tb_kategori` (`kategori_id`, `kategori_nama`) VALUES
-(1, 'Sawit Marihat'),
+(1, 'Sawit (PPKS) Marihat Klon / MK'),
 (2, 'Sawit Sucfindo'),
-(22, 'Sawit MK'),
-(24, '');
+(22, 'Sawit Lonsum'),
+(25, 'Sawit Topaz');
 
 -- --------------------------------------------------------
 
@@ -588,6 +589,13 @@ CREATE TABLE `tb_keranjang` (
   `jumlah_beli` int(11) NOT NULL,
   `tgl_keranjang` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_keranjang`
+--
+
+INSERT INTO `tb_keranjang` (`keranjang_id`, `member_id`, `produk_id`, `jumlah_beli`, `tgl_keranjang`) VALUES
+(79, 4, 19, 2, '2019-12-02');
 
 -- --------------------------------------------------------
 
@@ -605,6 +613,14 @@ CREATE TABLE `tb_konfirmasi` (
   `jumlah_transfer` int(11) NOT NULL,
   `bukti_transfer` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_konfirmasi`
+--
+
+INSERT INTO `tb_konfirmasi` (`konfirmasi_id`, `transaksi_id`, `bank_pengirim`, `bank_penerima`, `nama_pengirim`, `tgl_transfer`, `jumlah_transfer`, `bukti_transfer`) VALUES
+(12, '20191201115213', 'yuyu', 'y', 'uyiuu', '2019-12-01', 72, '20191201120152mm.png'),
+(13, '20191201121219', 'BRI', 'BRI', 'Rafi', '2019-12-03', 1750000, '20191201121347logo.png');
 
 -- --------------------------------------------------------
 
@@ -630,9 +646,7 @@ CREATE TABLE `tb_member` (
 --
 
 INSERT INTO `tb_member` (`member_id`, `member_nama`, `member_email`, `member_nohp`, `tgl_daftar`, `provinsi_id`, `kabkota_id`, `kode_pos`, `password`, `member_alamat`) VALUES
-(1, 'Rafi Sahendra', 'rafisaehndra@gmail.com', '085363229539', '2019-11-20', 3, 2, '27684', 'admin', 'Padang Panjang'),
-(4, 'PDO Only', 'ayunda@gmail.com', '085656565656', '2019-11-24', 3, 2, '27481', '2df8c55d47933d5ba55c62996a9bb976', 'Sijunjuang'),
-(6, 'midianto', 'midianto@gmail.com', '08565656565', '2019-11-27', 3, 2, '27875', '25d55ad283aa400af464c76d713c07ad', 'Bangun rejo pasaman barat');
+(4, 'Rafi Sehendra', 'rafisahendra07@gmail.com', '-', '2019-12-01', 0, 0, '-', 'fafae7c0cbe4b1aa33bb9abd857e80c4', '-');
 
 -- --------------------------------------------------------
 
@@ -653,7 +667,7 @@ CREATE TABLE `tb_ongkir` (
 
 INSERT INTO `tb_ongkir` (`ongkir_id`, `kabkota_id`, `provinsi_id`, `ongkos_kirim`) VALUES
 (3, 2, 3, 75000),
-(4, 204, 4, 90000);
+(4, 204, 77, 90000);
 
 -- --------------------------------------------------------
 
@@ -664,7 +678,7 @@ INSERT INTO `tb_ongkir` (`ongkir_id`, `kabkota_id`, `provinsi_id`, `ongkos_kirim
 CREATE TABLE `tb_produk` (
   `produk_id` int(11) NOT NULL,
   `kategori_id` int(11) NOT NULL,
-  `produk_nama` varchar(50) NOT NULL,
+  `produk_nama` varchar(191) NOT NULL,
   `gambar_produk` varchar(191) NOT NULL,
   `produk_tgl` date NOT NULL,
   `produk_harga` double NOT NULL,
@@ -678,11 +692,10 @@ CREATE TABLE `tb_produk` (
 
 INSERT INTO `tb_produk` (`produk_id`, `kategori_id`, `produk_nama`, `gambar_produk`, `produk_tgl`, `produk_harga`, `produk_stok`, `produk_keterangan`) VALUES
 (17, 3, 'Sawit pasaman (Kinali)', '2019111907191577.jpg', '2019-11-20', 175000, 25, 'Sawit mantap'),
-(18, 2, 'Sawit Dharmasraya', '20191126104833Topaz.jpg', '2019-11-26', 50000, 15, 'Padang panjang'),
-(19, 22, 'Sawit Medan', '20191126104844Lonsum.jpg', '2019-11-26', 50000, 10, 'Ullamco perferendis '),
-(20, 2, 'Sawit Kinali Raya', '20191126104907sucfindon.jpg', '2019-11-26', 60000, 19, 'Ipsum recusandae Alyes'),
-(21, 1, 'Sawit Cambah', '20191126104917Topaz.jpg', '2019-11-26', 50000, 20, 'Mantap Syekali detail'),
-(22, 2, 'sawit pariaman', '20191126104925PPKS.jpg', '2019-11-26', 1600, 14, 'Nam ut voluptatem qd');
+(18, 2, 'UKM Sumber Urep (Bibit Marihat)', '20191126104833Topaz.jpg', '2019-12-02', 30000, 150, 'Sawit degan kualitas terbaik dan daun pelepah panjang'),
+(19, 22, 'Kelompok Tani (KT) Makmur sentosa (Biibit Sucfindo)', '20191126104844Lonsum.jpg', '2019-12-02', 27000, 100, 'Sawit terbaik kinali'),
+(20, 2, 'UKM Tanamo Jaya (Bibit Lonsum)', '20191126104907sucfindon.jpg', '2019-12-02', 25000, 191, 'Sawit dengan daun pelepah pendek\r\n'),
+(21, 25, 'Kelompok Tani (KT) Karya Mandiri (Bibit Topaz', '20191126104917Topaz.jpg', '2019-12-02', 18000, 200, 'Sawit produksi Bangun rejo');
 
 -- --------------------------------------------------------
 
@@ -756,12 +769,8 @@ CREATE TABLE `tb_transaksi` (
 --
 
 INSERT INTO `tb_transaksi` (`transaksi_id`, `tgl_pesan`, `member_id`, `total_bayar`, `status`, `ongkir_id`, `pesan_pemesanan`) VALUES
-('20191126073521', '2019-11-26', 4, 390000, 'Belum Konfirmasi', 3, ''),
-('20191126075332', '2019-11-26', 4, 355000, 'Belum Konfirmasi', 3, ''),
-('20191126075938', '2019-11-26', 4, 78200, 'Belum Konfirmasi', 3, 'Sawit yg bagus bagus ya gan '),
-('20191127091319', '2019-11-27', 4, 295000, 'Belum Konfirmasi', 3, ' '),
-('20191127120931', '2019-11-27', 4, 725000, 'Belum Konfirmasi', 3, 'Mantap  Dikit  ya bg '),
-('20191127122004', '2019-11-27', 6, 175000, 'Belum Konfirmasi', 3, 'Mantap gan ');
+('20191201014645', '2019-12-01', 4, 475000, 'Belum Konfirmasi', 3, 'Gas  ken '),
+('20191201121219', '2019-12-01', 4, 175000, 'Pembayaran Diterima', 3, 'Gan gasken ');
 
 -- --------------------------------------------------------
 
@@ -782,16 +791,17 @@ CREATE TABLE `tb_transaksi_detail` (
 --
 
 INSERT INTO `tb_transaksi_detail` (`detail_id`, `transaksi_id`, `produk_id`, `jumlah_beli`, `subtotal`) VALUES
-(5, '20191126073521', 20, 2, 120000),
-(6, '20191126073521', 19, 4, 200000),
-(7, '20191126075332', 20, 3, 180000),
-(8, '20191126075332', 21, 2, 100000),
-(9, '20191126075938', 22, 2, 3200),
-(10, '20191127091319', 21, 2, 100000),
-(11, '20191127091319', 20, 2, 120000),
-(12, '20191127120931', 21, 12, 600000),
-(13, '20191127120931', 21, 1, 50000),
-(14, '20191127122004', 21, 2, 100000);
+(30, '20191201083055', 21, 2, 100000),
+(31, '20191201083145', 21, 2, 100000),
+(32, '20191201083145', 20, 3, 180000),
+(33, '20191201093516', 21, 2, 100000),
+(34, '20191201093608', 21, 2, 100000),
+(35, '20191201115213', 21, 2, 100000),
+(36, '20191201115213', 19, 2, 100000),
+(37, '20191201121219', 21, 2, 100000),
+(38, '20191201121413', 21, 2, 100000),
+(39, '20191201014645', 21, 3, 150000),
+(40, '20191201014645', 18, 5, 250000);
 
 --
 -- Indexes for dumped tables
@@ -879,7 +889,7 @@ ALTER TABLE `tb_transaksi_detail`
 -- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_informasi`
@@ -891,25 +901,25 @@ ALTER TABLE `tb_informasi`
 -- AUTO_INCREMENT for table `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `tb_konfirmasi`
 --
 ALTER TABLE `tb_konfirmasi`
-  MODIFY `konfirmasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `konfirmasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tb_member`
 --
 ALTER TABLE `tb_member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_ongkir`
@@ -933,7 +943,7 @@ ALTER TABLE `tb_provinsi`
 -- AUTO_INCREMENT for table `tb_transaksi_detail`
 --
 ALTER TABLE `tb_transaksi_detail`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

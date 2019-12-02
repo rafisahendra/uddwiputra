@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong>Welcome To <br> UD Dwiputra</strong></h1>
-                            <p class="m-b-40">belanja amanah<br> online payment</p>
+                            <p class="m-b-40">Hasil buah yang terbaik dihasilkan oleh bibit pilihan</p>
                             <p><a class="btn hvr-hover" href="#">Belanja Sekarang</a></p>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong>Welcome To <br> UD Dwiputra</strong></h1>
-                            <p class="m-b-40">Bibit Unggul<br> Kelapa Sawit.</p>
+                            <p class="m-b-40"></p>
                             <p><a class="btn hvr-hover" href="#">Belanja Sekarang</a></p>
                         </div>
                     </div>

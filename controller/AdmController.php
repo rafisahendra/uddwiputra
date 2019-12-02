@@ -7,6 +7,7 @@ $aksi = $_GET['aksi'];
 
 if($aksi == 'change'){
         if( $_POST['passbaru'] == $_POST['konfirmasi']){
+          
         $db->update_admin($_POST['id'], $_POST['passbaru'],$_POST['konfirmasi']);
         echo"<script>alert('Password Telah Diperbaharui);</script>";
         echo"<script>window.location='../admin/pages/index.php';</script>";

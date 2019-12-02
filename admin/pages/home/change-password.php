@@ -1,6 +1,6 @@
 <div class="card mb-4 py-2 border-left-info">
 	<div class="card-body">
-		<?php foreach($db->tampil_admin() as $i): 
+		<?php foreach($db->tampil_admin($_SESSION['admin_id']) as $i): 
 		$pass = $i->password ;
 		$result_pass =	substr($pass ,53);
 			?>
@@ -10,7 +10,7 @@
 				<div class="col-md-6">
 					<div class="form-group ">
 						<label>Password lama</label><br>
-						<input type="hidden" name="id" value="<?= $_SESSION['id']; ?>">
+						<input type="hidden" name="id" value="<?= $_SESSION['admin_id']; ?>">
 						<input type="password"  class="form-control" name="passlama" value="<?= $result_pass ?>" readonly>
 					</div>
 					<div class="form-group ">
