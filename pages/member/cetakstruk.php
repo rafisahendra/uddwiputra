@@ -2,10 +2,11 @@
 <?php
 include '../../model/M_Library.php';
 $db = new M_Library();
+  // var_dump($_GET['id']);exit;
 ?>
 
 
-<body onLoad="window.print()">
+<!-- <body onLoad="window.print()"> -->
 <p align="center">UD. DWI PUTRA</p>
 <center>Faktur Pembelian Bibit Sawit</center>
 
@@ -18,6 +19,7 @@ $db = new M_Library();
 $bayar =0;
 foreach($db->tampil_ord_member($_GET['id']) as $mm): 
   $ongkir =  $mm->ongkos_kirim ;
+
 
 ?>
  

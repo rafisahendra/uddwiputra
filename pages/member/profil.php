@@ -129,7 +129,7 @@
             </div>
             <?php }else{ ?>
             <!--  2-->
-            <?php foreach($db->member_tampilpk($_SESSION['member_id']) as $dpk) : ?>
+            <?php foreach($db->member_tampilpk($_SESSION['member_id']) as $no=> $dpk) : ?>
             <div class="row">
 
                 <div class="col-lg-6">
@@ -192,43 +192,66 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="../controller/HomeController.php?aksi=lengkapi_data" method="POST">
+                        <form action="../controller/HomeController.php?aksi=edit_data" method="POST">
                         <div class="modal-body">
+                        <label for="">Nama</label>
+                        <input type="hidden" name="id" value="<?= $d->member_id ?>">
+                        <input type="text" name="nama" class="form-control" value="<?= $d->member_nama ?>">
 
+                        <div class="row">
+                        <div class="col-md-6">
+                        <label for="">Email</label>
+                        <input type="email" name="email" class="form-control" value="<?= $d->member_email?>">
+
+                        </div>
+                        <div class="col-md-6">
+
+                        <label for="">Nohp</label>
+                        <input type="text" name="nohp" class="form-control" value="<?= $d->member_nohp ?>">
+                        </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-md-6">
                             <label for="">Provinsi</label>
                             <input type="hidden" name="id" value="<?= $d->member_id ?>">
                             <select name="id_provinsi" class="form-control" id="" required>
                                 <option value="">--Pilih Provinsi--</option>
-                                <?php foreach($db->tampil_provinsi() as $prov) : ?>
+                                <?php foreach($db->tampil_provinsi() as  $prov) : ?>
                                 <option value="<?= $prov->provinsi_id ?>"><?= $prov->nama_provinsi ?></option>
-                                <?php endforeach ?>
+                                
+                                <?php $idp =  $prov->provinsi_id ; endforeach ?>
                             </select>
-
+                                </div>
+                                <div class="col-md-6">
                             <label for="">kabkota</label>
                             <select name="id_kabkota" class="form-control" id="" required>
                             <option value="">--Pilih kabupaten/Kota--</option>
-                                <?php foreach($db->tampil_kabkota() as $kab) : ?>
+                                <?php foreach($db->tampil_kabkota()  as  $kab) : ?>
                                 <option value="<?= $kab->kabkota_id ?>"><?= $kab->nama_kabkota ?></option>
-                                <?php endforeach ?>
+                                <?php $idk =  $kab->kabkota_id; endforeach ?>
+                                
                             </select>
-
-                            <label for="">Alamat</label>
-                            <textarea name="alamat" id="" cols="43" rows="3" required></textarea>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">Nohp</label>
-                                    <input type="text" name="nohp" class="form-control" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Kode Pos</label>
-                                    <input type="number" name="kode_pos" class="form-control" required>
-                                </div>
-                            </div>
+                            </div> 
+                        
+                            <script>
+                            document.getElementsByName("id_provinsi")[<?= $no?>].value="<?= $dpk->provinsi_id ?>";
+                            document.getElementsByName("id_kabkota")[<?= $no?>].value="<?= $dpk->kabkota_id ?>";
+                            </script>
+                        <div class="col-md-6">
+                        <label for="">Kode Pos</label>
+                        <input type="number" name="kode_pos" class="form-control" required value="<?= $d->kode_pos?>">
                         </div>
-                        <div class="modal-footer">
+                        </div>   
+                            <label for="">Alamat</label>
+                            <textarea name="alamat" id="" cols="43" rows="3" required><?= $d->member_alamat ?></textarea>
+                            </div>
+                            <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
+                        </div>
+                       
                         </form>
                     </div>
                 </div>
@@ -239,3 +262,4 @@
     </div>
     <!-- End About Page -->
 </div>
+

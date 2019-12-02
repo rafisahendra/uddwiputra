@@ -33,7 +33,10 @@ if($aksi == 'change'){
           echo"<script>window.location='../pages/index.php?page=home/login';</script>";
      }elseif($aksi == 'lengkapi_data'){
         $db->lengkapi_data($_POST['id'],$_POST['id_provinsi'],$_POST['id_kabkota'],$_POST['alamat'],$_POST['nohp'],$_POST['kode_pos']);
-        header('location:../admin/pages/index.php?module=kategori/view');
+        header('location:../pages/indexs.php?page=member/profil');
+    }elseif($aksi == 'edit_data'){
+        $db->edit_data($_POST['id'],$_POST['id_provinsi'],$_POST['id_kabkota'],$_POST['alamat'],$_POST['nohp'],$_POST['kode_pos'],$_POST['nama'],$_POST['email']);
+        header('location:../pages/indexs.php?page=member/profil');
     }elseif($aksi == 'tambah_keranjang'){
         if(isset($_POST['btn_beli']) ){
         $db->tambah_keranjang($_POST['id_member'],$_POST['id_produk'],$_POST['beli']);
@@ -51,8 +54,10 @@ if($aksi == 'change'){
     }elseif($aksi == 'konfirmasi'){
         $db->tambah_konfirmasi($_POST['transaksi_id'],$_POST['nama'],$_POST['b_pengirim'],$_POST['b_penerima'],$_POST['j_kirim'],$_POST['tanggal'],$_FILES['bukti']['name'],$_FILES['bukti']['tmp_name']);
         header('location:../pages/indexs.php?page=member/pesanan');
+    }elseif($aksi=='pesanan_diterima'){
+        $db->pesanan_diterima($_POST['id'],$_POST['status']);
+        header('location:../pages/indexs.php?page=member/konfirmasi-penerimaan');
     }
-    
 ?>
 
 

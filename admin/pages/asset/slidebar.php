@@ -40,6 +40,7 @@
                 <h6 class="collapse-header">Menu Data</h6>
             <a class="collapse-item" href="?module=kategori/view">Kategori</a>
             <a class="collapse-item" href="?module=produk/view">Produk</a>
+            <a class="collapse-item" href="?module=member/view">Member</a>
             <a class="collapse-item" href="?module=ongkir/view">Ongos Kirim</a>
                       <a class="collapse-item" href="?module=transaksi/view">Transaksi</a>
           </div>

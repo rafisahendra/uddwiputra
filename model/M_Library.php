@@ -112,7 +112,16 @@ class M_Library extends Db{
     return $query;
     }
 
-   
+    function tampil_member(){
+      
+        $query =  $this->tampil("SELECT* from tb_member ");
+        return $query;
+        }
+    
+    function hapus_member($id){
+    $this->universal("DELETE from tb_member where member_id = $id");
+      
+    }
 
     function update_admin($id, $pass, $konfirmasi){
 
@@ -257,15 +266,17 @@ class M_Library extends Db{
 
     function status_transaksi( $id, $status){
 
-
-     
-
+        // echo "   UPDATE `tb_transaksi` SET `status`='$status' WHERE `transaksi_id`='$id'";exit;
+        $query = $this->universal("UPDATE `tb_transaksi` SET `status`='$status' WHERE `transaksi_id`='$id'");
+        return $query;
+    }
+    function pesanan_diterima( $id, $status){
 
         // echo "   UPDATE `tb_transaksi` SET `status`='$status' WHERE `transaksi_id`='$id'";exit;
         $query = $this->universal("UPDATE `tb_transaksi` SET `status`='$status' WHERE `transaksi_id`='$id'");
         return $query;
     }
-
+    
 //////////////////////////////////====Library For Home====///////////////////////////
 
 // ========================= Tampil jumlah Di Home ================================
@@ -346,6 +357,20 @@ class M_Library extends Db{
                         ':pos'  =>$pos,
                         ':provinsi'=>$provinsi,
                         ':kabkota' =>$kabkota,
+                        ':id'      =>$id ]);
+        $stmt = null;
+    }
+
+
+    function edit_data($id, $provinsi,$kabkota,$alamat,$nohp,$pos,$nama,$email){
+        $stmt = $this->db->prepare("UPDATE tb_member set member_nama=:nama, member_email=:email, kabkota_id=:kabkota, provinsi_id=:provinsi, kode_pos=:pos ,member_alamat=:alamat, member_nohp=:nohp where member_id=:id");
+        $stmt->execute([':alamat'  =>$alamat,
+                        ':nohp'  =>$nohp,
+                        ':pos'  =>$pos,
+                        ':provinsi'=>$provinsi,
+                        ':kabkota' =>$kabkota,
+                        ':nama' =>$nama,
+                        ':email' =>$email,
                         ':id'      =>$id ]);
         $stmt = null;
     }
@@ -470,7 +495,8 @@ class M_Library extends Db{
 
 
     function tampil_ord_member($id_order){
-      
+   
+            // echo "SELECT * FROM tb_transaksi a  JOIN tb_member c ON a.member_id=c.member_id JOIN tb_ongkir d ON a.ongkir_id = d.ongkir_id  WHERE a.transaksi_id='$id_order'";exit;
         $query = $this->tampil("SELECT * FROM tb_transaksi a  JOIN tb_member c ON a.member_id=c.member_id JOIN tb_ongkir d ON a.ongkir_id = d.ongkir_id  WHERE a.transaksi_id='$id_order'");
 
         return $query;

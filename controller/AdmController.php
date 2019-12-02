@@ -61,6 +61,9 @@ if($aksi == 'change'){
     }elseif($aksi=='status_transaksi'){
         $db->status_transaksi($_GET['id'],$_POST['status']);
         header('location:../admin/pages/index.php?module=transaksi/view');
+    }elseif($aksi=='hapus_memeber'){
+        $db->hapus_member($_GET['id']);
+        header('location:../admin/pages/index.php?module=member/view');
     }
 
 ?>
