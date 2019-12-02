@@ -106,6 +106,7 @@
                         <?php foreach($db->member_tampil($_SESSION['member_id']) as $dpk) : ?>
                             <?php
                                 $prov = $dpk->provinsi_id;
+                               
                                 $kabkota = $dpk->kabkota_id;                   
                             ?>
                         <?php endforeach ?>
@@ -135,9 +136,14 @@
                     <input type="hidden" name="id_ongkir" value="<?= $o->ongkir_id ?>">
                     <input type="hidden" name="jumlah_bayar" value="<?= $hasil + $o->ongkos_kirim ?>">
 
-                    <a style="margin-left:870px;" href="#!" class="cart"> 
-                     <button style="color:white"  type='submit' data-fancybox-close=""  class="btn hvr-hover"><span class="fa fa-check"> </span> Checkout</button></a>
 
+                    <?php if($prov == 0){  ?>
+                            <a style="margin-left:870px;" href="#!" class="cart"> 
+                            <button style="color:white" name="lengkapi" type='submit' data-fancybox-close=""  class="btn hvr-hover"><span class="fa fa-check"> </span> Checkout</button></a>
+                   <?php   }else{ ?>
+                   <a style="margin-left:870px;" href="#!" class="cart"> 
+                     <button style="color:white"  type='submit' data-fancybox-close=""  class="btn hvr-hover"><span class="fa fa-check"> </span> Checkout</button></a>
+                   <?php }?>
                
 
                

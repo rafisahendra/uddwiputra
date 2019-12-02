@@ -49,8 +49,15 @@ if($aksi == 'change'){
         $db->hapus_keranjang($_GET['id']);
         header('location:../pages/indexs.php?page=member/keranjang');
     }elseif($aksi == 'tambah_transaksi'){
+        if(isset($_POST['lengkapi'])){
+            echo"<script>alert('Lengkapi data Anda');</script>";
+            echo"<script>window.location='../pages/indexs.php?page=member/profil';</script>";
+           
+        }else{
+
         $db->tambah_transaksi($_POST['id_member'],$_POST['id_ongkir'],$_POST['jumlah_bayar'],$_POST['pesan']);
         header('location:../pages/indexs.php?page=member/pesanan');
+        }
     }elseif($aksi == 'konfirmasi'){
         $db->tambah_konfirmasi($_POST['transaksi_id'],$_POST['nama'],$_POST['b_pengirim'],$_POST['b_penerima'],$_POST['j_kirim'],$_POST['tanggal'],$_FILES['bukti']['name'],$_FILES['bukti']['tmp_name']);
         header('location:../pages/indexs.php?page=member/pesanan');
