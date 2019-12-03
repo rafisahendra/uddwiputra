@@ -2,4 +2,4 @@
 header('location:pages/index.php');
 ?>
 
-<!-- Mau test brand baru -->
+<!-- Jangan sampai Error-->
