@@ -2,4 +2,4 @@
 header('location:pages/index.php');
 ?>
 
-<!-- text -->
+<!-- text ON -->
