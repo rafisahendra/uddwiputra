@@ -178,7 +178,7 @@
       <div class="modal-body">
       <form action="../../controller/AdmController.php?aksi=tambah_produk" method="POST" enctype="multipart/form-data">
           <label for="">Nama Produk</label>
-          <input type="text" name="nama_p" class="form-control" placeholder="Nama Kategori" required>
+          <input type="text" name="nama_p" class="form-control" placeholder="Nama Produk" required>
           <label for="">Nama Kategori</label>
           <select name="id_kategori" id="" class="form-control" required>
             <?php      

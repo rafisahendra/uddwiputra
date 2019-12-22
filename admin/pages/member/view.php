@@ -4,12 +4,12 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <h6 class=" font-weight-bold text-right">Data: Member</h6>
-    <a href="#" class="btn btn-info btn-icon-split btn-sm">
+   <!--  <a href="#" class="btn btn-info btn-icon-split btn-sm">
       <span class="icon text-white-50">
         <i class="fas fa-plus"></i>
       </span>
       <span class="text" data-toggle="modal" data-target="#exampleModal">Tambah</span>
-    </a>
+    </a> -->
 
 
   </div>

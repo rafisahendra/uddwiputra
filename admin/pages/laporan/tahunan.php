@@ -12,13 +12,17 @@
             <select name="tahun" class="form-control">
               <?php 
               $v = date('Y'); 
-              for ($i=2015; $i <= $v; $i++) { 
-                if ($i == $v) {?>
-              <option value="<?= $i ?>" selected="selected"><?= $i ?></option>
-              <?php }else{  ?>
+              for ($i=2015; $i <= $v; $i++)
+              { 
+              ?>
               <option value="<?= $i ?>"><?= $i ?></option>
-              <?php }} ?>
+              <?php
+              }
+              ?>
             </select>
+            <script>
+              document.getElementsByName("tahun")[0].value = "<?=$v?>";
+            </script>
           </div>
           <div class="col-md-1">
             <label for="">Aksi</label>

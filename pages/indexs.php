@@ -5,6 +5,11 @@
 <?php include '../model/M_Library.php'; $db = new M_Library; ?>
 
 <?php session_start();
+error_reporting(0);
+echo "$_SESSION[member_id]";
+if(empty($_SESSION['member_id'])){
+    header('location:../pages/index.php?page=home/login');
+}
 ?>
   
 

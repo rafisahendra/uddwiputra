@@ -3,7 +3,14 @@ class Db {
 
      function __construct()
     {
-        $this->db = new PDO("mysql:host=localhost;dbname=db_bibit",'root','');
+
+    try{
+         $this->db = new PDO("mysql:host=localhost;port=3306;dbname=db_bibit",'root','');
+        // echo "Koneksi Berhasil";
+       }catch(PDOException $error) {
+         echo "Koneksi Gagal".$error->getMessage();
+    }
+       
     }
 
 
