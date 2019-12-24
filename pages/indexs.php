@@ -6,7 +6,6 @@
 
 <?php session_start();
 error_reporting(0);
-echo "$_SESSION[member_id]";
 if(empty($_SESSION['member_id'])){
     header('location:../pages/index.php?page=home/login');
 }
