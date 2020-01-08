@@ -56,8 +56,8 @@
         <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo3" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Informasi</h6>
-            <a class="collapse-item" href="?module=tentang/view">Tentang Kami</a>
-           <a class="collapse-item" href="?module=informasi/view">Cara Pemesanan</a>
+            <a class="collapse-item" href="?module=tentang/view">Kelola Tentang Kami</a>
+           <a class="collapse-item" href="?module=informasi/view">Kelola Cara Pembelian</a>
           </div>
         </div>
       </li>
