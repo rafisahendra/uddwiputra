@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 22, 2019 at 04:26 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 16 Jan 2020 pada 15.00
+-- Versi server: 10.4.10-MariaDB
+-- Versi PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_admin`
+-- Struktur dari tabel `tb_admin`
 --
 
 CREATE TABLE `tb_admin` (
@@ -36,7 +36,7 @@ CREATE TABLE `tb_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_admin`
+-- Dumping data untuk tabel `tb_admin`
 --
 
 INSERT INTO `tb_admin` (`admin_id`, `username`, `password`, `level`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `tb_admin` (`admin_id`, `username`, `password`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_informasi`
+-- Struktur dari tabel `tb_informasi`
 --
 
 CREATE TABLE `tb_informasi` (
@@ -56,7 +56,7 @@ CREATE TABLE `tb_informasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_informasi`
+-- Dumping data untuk tabel `tb_informasi`
 --
 
 INSERT INTO `tb_informasi` (`informasi_id`, `judul_informasi`, `keterangan`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `tb_informasi` (`informasi_id`, `judul_informasi`, `keterangan`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_kabkota`
+-- Struktur dari tabel `tb_kabkota`
 --
 
 CREATE TABLE `tb_kabkota` (
@@ -76,7 +76,7 @@ CREATE TABLE `tb_kabkota` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_kabkota`
+-- Dumping data untuk tabel `tb_kabkota`
 --
 
 INSERT INTO `tb_kabkota` (`kabkota_id`, `nama_kabkota`, `provinsi_id`) VALUES
@@ -558,7 +558,7 @@ INSERT INTO `tb_kabkota` (`kabkota_id`, `nama_kabkota`, `provinsi_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_kategori`
+-- Struktur dari tabel `tb_kategori`
 --
 
 CREATE TABLE `tb_kategori` (
@@ -567,7 +567,7 @@ CREATE TABLE `tb_kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_kategori`
+-- Dumping data untuk tabel `tb_kategori`
 --
 
 INSERT INTO `tb_kategori` (`kategori_id`, `kategori_nama`) VALUES
@@ -579,7 +579,7 @@ INSERT INTO `tb_kategori` (`kategori_id`, `kategori_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_keranjang`
+-- Struktur dari tabel `tb_keranjang`
 --
 
 CREATE TABLE `tb_keranjang` (
@@ -590,10 +590,17 @@ CREATE TABLE `tb_keranjang` (
   `tgl_keranjang` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tb_keranjang`
+--
+
+INSERT INTO `tb_keranjang` (`keranjang_id`, `member_id`, `produk_id`, `jumlah_beli`, `tgl_keranjang`) VALUES
+(92, 4, 19, 20, '2020-01-14');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_konfirmasi`
+-- Struktur dari tabel `tb_konfirmasi`
 --
 
 CREATE TABLE `tb_konfirmasi` (
@@ -608,19 +615,30 @@ CREATE TABLE `tb_konfirmasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_konfirmasi`
+-- Dumping data untuk tabel `tb_konfirmasi`
 --
 
 INSERT INTO `tb_konfirmasi` (`konfirmasi_id`, `transaksi_id`, `bank_pengirim`, `bank_penerima`, `nama_pengirim`, `tgl_transfer`, `jumlah_transfer`, `bukti_transfer`) VALUES
 (12, '20191201115213', 'yuyu', 'y', 'uyiuu', '2019-12-01', 72, '20191201120152mm.png'),
 (13, '20191201121219', 'BRI', 'BRI', 'Rafi', '2019-12-03', 1750000, '20191201121347logo.png'),
 (14, '20191202022438', 'Dolor culpa exercit', 'Qui distinctio Enim', 'Consequatur saepe a', '2005-12-18', 79, '20191202044548logo.png'),
-(15, '20191222041352', 'BRI', 'BNI', 'Brek', '2019-12-22', 1320000, '20191222041633koper.jpg');
+(15, '20191222041352', 'BRI', 'BNI', 'Brek', '2019-12-22', 1320000, '20191222041633koper.jpg'),
+(16, '20200114035203', 'BRI', 'BNI', 'anto osd', '2020-01-14', 1226000, '20200114035358f.png'),
+(17, '20200114042334', 'mandiri', 'BNI', 'rafi sahendra', '2020-01-13', 530000, '20200114042716bukti transfer.jpg'),
+(18, '20200114045043', 'mandiri', 'BNI', 'rafi sahendra', '2020-01-13', 1725000, '20200114045251bukti transfer.jpg'),
+(19, '20200116072424', 'BNI', 'BNI', 'misdianto', '2020-01-14', 435000, '20200116072756bukti transfer 2.jpg'),
+(20, '20200116110722', 'mandiri', 'BNI', 'rafi sahendra', '2020-01-18', 570000, '20200116021244bukti transfer.jpg'),
+(21, '20200116021759', 'BNI', 'BNI', 'juli eka', '2020-01-24', 480000, '20200116021937bukti transfer 2.jpg'),
+(22, '20200116022833', 'mandiri', 'BRI', 'bambang kuswoyo', '2020-01-30', 165000, '20200116022958bukti transfer.jpg'),
+(23, '20200116023436', 'BNI', 'BRI', 'dwi sunarto', '2020-01-21', 270000, '20200116023552bukti transfer 2.jpg'),
+(24, '20200116023814', 'BNI', 'BNI', 'dwi sunarto', '2020-01-21', 462000, '20200116023936bukti transfer 2.jpg'),
+(25, '20200116024410', 'mandiri', 'BRI', 'latif sudiransah', '2020-01-20', 300000, '20200116024527bukti transfer.jpg'),
+(26, '20200116025431', 'BNI', 'BRI', 'novriadi', '2020-01-17', 205000, '20200116025559bukti transfer 2.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_member`
+-- Struktur dari tabel `tb_member`
 --
 
 CREATE TABLE `tb_member` (
@@ -637,18 +655,23 @@ CREATE TABLE `tb_member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_member`
+-- Dumping data untuk tabel `tb_member`
 --
 
 INSERT INTO `tb_member` (`member_id`, `member_nama`, `member_email`, `member_nohp`, `tgl_daftar`, `provinsi_id`, `kabkota_id`, `kode_pos`, `password`, `member_alamat`) VALUES
-(4, 'Rafi Sehendra', 'rafisahendra07@gmail.com', '085345445454', '2019-12-01', 6, 70, '27684', 'fafae7c0cbe4b1aa33bb9abd857e80c4', 'Jl pasar usang, Parit malintang II'),
-(13, 'Misdianto ', 'midianto@gmail.com', '085376767676', '2019-12-02', 6, 78, '27684', '25d55ad283aa400af464c76d713c07ad', 'Ujung gading pasaman'),
-(14, 'rebo', 'rebo@gmail.com', '0853454545', '2019-12-22', 6, 78, '27684', '303e1dc4fe6162361b99f3330530d95f', 'Kinali');
+(16, 'rafi sahendra', 'rafisahendra07@gmail.com', '082272459655', '2020-01-14', 6, 78, '25457', '25d55ad283aa400af464c76d713c07ad', 'kinali, padang canduh'),
+(17, 'misdianto', 'anto@gmail.com', '082246765421', '2020-01-16', 6, 78, '42322', '25d55ad283aa400af464c76d713c07ad', 'simpang 3 opir'),
+(18, 'juli eka', 'julieka@gmail.com', '082256765676', '2020-01-16', 6, 78, '42567', '25d55ad283aa400af464c76d713c07ad', 'jl,sarik simpang tiga'),
+(19, 'retno sutanto', 'retno@gmail.com', '082272459656', '2020-01-16', 6, 78, '24356', '25d55ad283aa400af464c76d713c07ad', 'jl.kajai simpang empat'),
+(20, 'bambang kuswoyo', 'bambang@gmail.com', '08535676768', '2020-01-16', 6, 78, '24576', '25d55ad283aa400af464c76d713c07ad', 'jl.padang canduh'),
+(21, 'dwi sunarto', 'dwisunarto@gmail.com', '082246765422', '2020-01-16', 6, 78, '24563', '25d55ad283aa400af464c76d713c07ad', 'jln.limapurut kinali'),
+(22, 'latif sudiransah', 'latif@gmail.com', '08535676768', '2020-01-16', 6, 77, '31456', '25d55ad283aa400af464c76d713c07ad', 'jl.panti simpang empat'),
+(23, 'novriadi', 'novriadi@gmail.com', '08535676769', '2020-01-16', 6, 78, '23457', '25d55ad283aa400af464c76d713c07ad', 'jl.padangcanduh kinali');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_ongkir`
+-- Struktur dari tabel `tb_ongkir`
 --
 
 CREATE TABLE `tb_ongkir` (
@@ -659,7 +682,7 @@ CREATE TABLE `tb_ongkir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_ongkir`
+-- Dumping data untuk tabel `tb_ongkir`
 --
 
 INSERT INTO `tb_ongkir` (`ongkir_id`, `kabkota_id`, `provinsi_id`, `ongkos_kirim`) VALUES
@@ -684,7 +707,7 @@ INSERT INTO `tb_ongkir` (`ongkir_id`, `kabkota_id`, `provinsi_id`, `ongkos_kirim
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_produk`
+-- Struktur dari tabel `tb_produk`
 --
 
 CREATE TABLE `tb_produk` (
@@ -699,11 +722,10 @@ CREATE TABLE `tb_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_produk`
+-- Dumping data untuk tabel `tb_produk`
 --
 
 INSERT INTO `tb_produk` (`produk_id`, `kategori_id`, `produk_nama`, `gambar_produk`, `produk_tgl`, `produk_harga`, `produk_stok`, `produk_keterangan`) VALUES
-(17, 3, 'Sawit pasaman (Kinali)', '2019111907191577.jpg', '2019-11-20', 175000, 25, 'Sawit mantap'),
 (18, 2, 'UKM Sumber Urep (Bibit Marihat)', '20191126104833Topaz.jpg', '2019-12-02', 30000, 150, 'Sawit degan kualitas terbaik dan daun pelepah panjang'),
 (19, 22, 'Kelompok Tani (KT) Makmur sentosa (Biibit Sucfindo)', '20191126104844Lonsum.jpg', '2019-12-02', 27000, 100, 'Sawit terbaik kinali'),
 (20, 2, 'UKM Tanamo Jaya (Bibit Lonsum)', '20191126104907sucfindon.jpg', '2019-12-02', 25000, 191, 'Sawit dengan daun pelepah pendek\r\n'),
@@ -712,7 +734,7 @@ INSERT INTO `tb_produk` (`produk_id`, `kategori_id`, `produk_nama`, `gambar_prod
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_provinsi`
+-- Struktur dari tabel `tb_provinsi`
 --
 
 CREATE TABLE `tb_provinsi` (
@@ -721,7 +743,7 @@ CREATE TABLE `tb_provinsi` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_provinsi`
+-- Dumping data untuk tabel `tb_provinsi`
 --
 
 INSERT INTO `tb_provinsi` (`provinsi_id`, `nama_provinsi`) VALUES
@@ -763,7 +785,7 @@ INSERT INTO `tb_provinsi` (`provinsi_id`, `nama_provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_transaksi`
+-- Struktur dari tabel `tb_transaksi`
 --
 
 CREATE TABLE `tb_transaksi` (
@@ -777,18 +799,25 @@ CREATE TABLE `tb_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_transaksi`
+-- Dumping data untuk tabel `tb_transaksi`
 --
 
 INSERT INTO `tb_transaksi` (`transaksi_id`, `tgl_pesan`, `member_id`, `total_bayar`, `status`, `ongkir_id`, `pesan_pemesanan`) VALUES
-('20191202022438', '2019-12-02', 4, 167000, 'Pesanan Diterima', 23, 'BG BG '),
-('20191202052315', '2019-12-02', 13, 66000, 'Belum Konfirmasi', 7, 'Mantaps '),
-('20191222041352', '2019-12-22', 14, 1320000, 'Pesanan Diterima', 7, 'sesuai alamat ya bg ');
+('20200114045043', '2020-01-14', 16, 1725000, 'Pesanan Diterima', 7, 'Sesuai alamat ya bg '),
+('20200116021759', '2020-01-16', 18, 480000, 'Pesanan Diterima', 7, 'Sesuai alamat ya bg '),
+('20200116022510', '2020-01-16', 19, 605000, 'Belum Konfirmasi', 7, 'Sesuai alamat ya bg '),
+('20200116022833', '2020-01-16', 20, 165000, 'Pembayaran Diterima', 7, 'Sesuai alamat ya bg '),
+('20200116023436', '2020-01-16', 21, 270000, 'Pesanan Diterima', 7, 'Sesuai alamat ya bg '),
+('20200116023814', '2020-01-16', 21, 462000, 'Pembayaran Diterima', 7, 'Sesuai alamat ya bg '),
+('20200116024410', '2020-01-16', 22, 300000, 'Kofirmasi Pembayaran', 15, 'Sesuai alamat ya bg '),
+('20200116025431', '2020-01-16', 23, 205000, 'Pembayaran Diterima', 7, 'Sesuai alamat ya bg '),
+('20200116072424', '2020-01-16', 17, 435000, 'Pesanan Diterima', 7, 'Sesuai alamat ya bg '),
+('20200116110722', '2020-01-16', 16, 570000, 'Pesanan Diterima', 7, 'Sesuai alamat ya bg ');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_transaksi_detail`
+-- Struktur dari tabel `tb_transaksi_detail`
 --
 
 CREATE TABLE `tb_transaksi_detail` (
@@ -800,7 +829,7 @@ CREATE TABLE `tb_transaksi_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_transaksi_detail`
+-- Dumping data untuk tabel `tb_transaksi_detail`
 --
 
 INSERT INTO `tb_transaksi_detail` (`detail_id`, `transaksi_id`, `produk_id`, `jumlah_beli`, `subtotal`) VALUES
@@ -808,149 +837,165 @@ INSERT INTO `tb_transaksi_detail` (`detail_id`, `transaksi_id`, `produk_id`, `ju
 (44, '20191202022438', 19, 3, 81000),
 (45, '20191202052315', 21, 2, 36000),
 (46, '20191222041352', 20, 30, 750000),
-(47, '20191222041352', 19, 20, 540000);
+(47, '20191222041352', 19, 20, 540000),
+(48, '20200114035203', 19, 23, 621000),
+(49, '20200114035203', 20, 23, 575000),
+(50, '20200114035445', 20, 36, 900000),
+(51, '20200114042334', 20, 20, 500000),
+(52, '20200114045043', 18, 25, 750000),
+(53, '20200114045043', 19, 23, 621000),
+(54, '20200114045043', 19, 12, 324000),
+(55, '20200116072424', 19, 15, 405000),
+(56, '20200116110722', 19, 20, 540000),
+(57, '20200116021759', 21, 25, 450000),
+(58, '20200116022510', 20, 23, 575000),
+(59, '20200116022833', 19, 5, 135000),
+(60, '20200116023436', 18, 8, 240000),
+(61, '20200116023814', 21, 24, 432000),
+(62, '20200116024410', 19, 10, 270000),
+(63, '20200116025431', 20, 7, 175000);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_admin`
+-- Indeks untuk tabel `tb_admin`
 --
 ALTER TABLE `tb_admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `tb_informasi`
+-- Indeks untuk tabel `tb_informasi`
 --
 ALTER TABLE `tb_informasi`
   ADD PRIMARY KEY (`informasi_id`);
 
 --
--- Indexes for table `tb_kabkota`
+-- Indeks untuk tabel `tb_kabkota`
 --
 ALTER TABLE `tb_kabkota`
   ADD PRIMARY KEY (`kabkota_id`),
   ADD KEY `id_provinsi` (`provinsi_id`);
 
 --
--- Indexes for table `tb_kategori`
+-- Indeks untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
   ADD PRIMARY KEY (`kategori_id`);
 
 --
--- Indexes for table `tb_keranjang`
+-- Indeks untuk tabel `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
   ADD PRIMARY KEY (`keranjang_id`);
 
 --
--- Indexes for table `tb_konfirmasi`
+-- Indeks untuk tabel `tb_konfirmasi`
 --
 ALTER TABLE `tb_konfirmasi`
   ADD PRIMARY KEY (`konfirmasi_id`);
 
 --
--- Indexes for table `tb_member`
+-- Indeks untuk tabel `tb_member`
 --
 ALTER TABLE `tb_member`
   ADD PRIMARY KEY (`member_id`);
 
 --
--- Indexes for table `tb_ongkir`
+-- Indeks untuk tabel `tb_ongkir`
 --
 ALTER TABLE `tb_ongkir`
   ADD PRIMARY KEY (`ongkir_id`);
 
 --
--- Indexes for table `tb_produk`
+-- Indeks untuk tabel `tb_produk`
 --
 ALTER TABLE `tb_produk`
   ADD PRIMARY KEY (`produk_id`);
 
 --
--- Indexes for table `tb_provinsi`
+-- Indeks untuk tabel `tb_provinsi`
 --
 ALTER TABLE `tb_provinsi`
   ADD PRIMARY KEY (`provinsi_id`);
 
 --
--- Indexes for table `tb_transaksi`
+-- Indeks untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
   ADD PRIMARY KEY (`transaksi_id`),
   ADD KEY `id_konsumen` (`member_id`);
 
 --
--- Indexes for table `tb_transaksi_detail`
+-- Indeks untuk tabel `tb_transaksi_detail`
 --
 ALTER TABLE `tb_transaksi_detail`
   ADD PRIMARY KEY (`detail_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_admin`
+-- AUTO_INCREMENT untuk tabel `tb_admin`
 --
 ALTER TABLE `tb_admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_informasi`
+-- AUTO_INCREMENT untuk tabel `tb_informasi`
 --
 ALTER TABLE `tb_informasi`
   MODIFY `informasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_kategori`
+-- AUTO_INCREMENT untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
   MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `tb_keranjang`
+-- AUTO_INCREMENT untuk tabel `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
--- AUTO_INCREMENT for table `tb_konfirmasi`
+-- AUTO_INCREMENT untuk tabel `tb_konfirmasi`
 --
 ALTER TABLE `tb_konfirmasi`
-  MODIFY `konfirmasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `konfirmasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `tb_member`
+-- AUTO_INCREMENT untuk tabel `tb_member`
 --
 ALTER TABLE `tb_member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `tb_ongkir`
+-- AUTO_INCREMENT untuk tabel `tb_ongkir`
 --
 ALTER TABLE `tb_ongkir`
   MODIFY `ongkir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `tb_produk`
+-- AUTO_INCREMENT untuk tabel `tb_produk`
 --
 ALTER TABLE `tb_produk`
   MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `tb_provinsi`
+-- AUTO_INCREMENT untuk tabel `tb_provinsi`
 --
 ALTER TABLE `tb_provinsi`
   MODIFY `provinsi_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT for table `tb_transaksi_detail`
+-- AUTO_INCREMENT untuk tabel `tb_transaksi_detail`
 --
 ALTER TABLE `tb_transaksi_detail`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

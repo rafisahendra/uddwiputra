@@ -18,26 +18,31 @@ if (isset($_POST['btn-cetak'])) {
     <td width="20%">Tanggal Order</td>
     <td width="15%">Nama Customer</td>
     <td width="19%">Total Belanja</td>
-    <td width="15%">Ongkir</td>
+    <td width="10%">Ongkir</td>
     <td width="19%">Total Bayar</td>
   </tr>
   <?php
     $no = 1;
+    $total=0;
       $sqldetail = mysqli_query($db, "SELECT * FROM `tb_transaksi` JOIN `tb_member` USING (member_id) JOIN `tb_ongkir` USING (ongkir_id) WHERE tgl_pesan='$tgl'");
       while ($trx = mysqli_fetch_array($sqldetail)) {
-        
+        $total = $total += $trx['total_bayar'];
         ?>
          <tr>
       <td><?= $no++ ?></td>
       <td><?= $trx['transaksi_id']?></td>
       <td><?= $trx['tgl_pesan']?></td>
       <td><?= $trx['member_nama']?></td>
-      <td><?php $jumlah = mysqli_fetch_array(mysqli_query($db, "SELECT SUM(subtotal) AS totalb FROM `tb_transaksi_detail` WHERE transaksi_id='$trx[transaksi_id]'"));  ?>
+      <td>Rp<?php $jumlah = mysqli_fetch_array(mysqli_query($db, "SELECT SUM(subtotal) AS totalb FROM `tb_transaksi_detail` WHERE transaksi_id='$trx[transaksi_id]'"));  ?>
         <?= $jumlah['totalb']?></td>
-      <td><?= $trx['ongkos_kirim']?></td>
-      <td><?= $trx['total_bayar']?></td>
+      <td>Rp <?= $trx['ongkos_kirim']?></td>
+      <td>Rp<?= $trx['total_bayar']?></td>
     </tr>
   <?php }  ?>
+  <tr>
+  <td colspan='6'>Total Keseluruhan</td>
+  <td  width="25%" >Rp <?= $total ?></td>
+  </tr>
 </table>
 <table width=80% align="center">
   <tr>

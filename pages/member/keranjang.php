@@ -42,7 +42,7 @@
                            <?php 
                            $hasil=0;
                            foreach($db->tampil_keranjang($_SESSION['member_id']) as $i=> $k): ?>
-                            <? $subtotal = $k->produk_harga * $k->jumlah_beli ?>
+                            <?php $subtotal = $k->produk_harga * $k->jumlah_beli ?>
                             <?php $hasil = $hasil += $subtotal ; 
                             
                             $krr = $db->jumlah_keranjang($_SESSION['member_id']);
